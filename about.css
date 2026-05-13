@@ -625,7 +625,7 @@
   line-height:1.7;
 }
 
-@media (max-width:1180px){
+@media (max-width:1200px){
   .about-hero-inner,
   .brand-grid,
   .numbers-grid,
@@ -633,12 +633,22 @@
     grid-template-columns:1fr;
   }
 
+  .about-copy h1{
+    font-size:52px;
+  }
+
   .about-cars{
-    min-height:360px;
+    min-height:380px;
   }
 
   .car-main{
     left:8%;
+    width:38%;
+  }
+
+  .car-secondary{
+    right:0;
+    width:56%;
   }
 
   .fleet-cards{
@@ -662,19 +672,104 @@
   }
 }
 
-@media (max-width:760px){
+@media (max-width:1024px){
   .about-hero{
     min-height:auto;
-    padding:34px 0 22px;
+    padding:26px 0 20px;
   }
 
   .about-hero-inner{
     min-height:auto;
-    gap:12px;
+    gap:20px;
+  }
+
+  .about-copy{
+    padding:18px 0 0;
+  }
+
+  .about-copy h1{
+    font-size:48px;
+  }
+
+  .about-copy p{
+    max-width:none;
+  }
+
+  .about-cars{
+    min-height:320px;
+  }
+
+  .car-main{
+    left:4%;
+    width:42%;
+  }
+
+  .car-secondary{
+    right:-2%;
+    width:60%;
+  }
+
+  .brand-section,
+  .numbers-section,
+  .service-summary,
+  .about-fleet,
+  .reasons-section{
+    padding-top:24px;
+  }
+
+  .brand-grid{
+    gap:34px;
+  }
+
+  .brand-image img{
+    height:400px;
+  }
+
+  .brand-content h2,
+  .numbers-intro h2,
+  .pricing-box h2{
+    font-size:36px;
+  }
+
+  .numbers-intro{
+    padding:0;
+  }
+
+  .numbers-cards article{
+    padding:28px 18px;
+  }
+
+  .service-summary-grid{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+  }
+
+  .fleet-cards,
+  .faq-grid{
+    grid-template-columns:1fr;
+  }
+
+  .reasons-grid{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width:768px){
+  .about-hero{
+    min-height:auto;
+    padding:32px 0 18px;
+  }
+
+  .about-hero-inner{
+    min-height:auto;
+    gap:14px;
   }
 
   .about-copy{
     padding:10px 0 0;
+  }
+
+  .breadcrumb{
+    flex-wrap:wrap;
   }
 
   .about-copy h1{
@@ -690,13 +785,17 @@
   }
 
   .about-cars{
-    min-height:250px;
+    min-height:auto;
+    display:grid;
+    justify-items:center;
+    padding-top:6px;
   }
 
   .car-main,
   .car-secondary{
     position:relative;
     width:100%;
+    max-width:520px;
     right:auto;
     left:auto;
     bottom:auto;
@@ -706,12 +805,13 @@
     margin-top:-24px;
   }
 
+  .about-cars::after{
+    display:none;
+  }
+
   .brand-grid,
-  .faq-grid,
   .brand-features,
   .service-summary-grid,
-  .fleet-cards,
-  .reasons-grid,
   .numbers-cards{
     grid-template-columns:1fr;
   }
@@ -733,5 +833,115 @@
 
   .brand-image img{
     height:320px;
+  }
+
+  .fleet-card-item img{
+    height:200px;
+  }
+
+  .vf5-card img{
+    height:188px;
+  }
+
+  .limo-card img{
+    height:204px;
+  }
+}
+
+@media (max-width:480px){
+  .breadcrumb{
+    gap:6px;
+    font-size:12px;
+  }
+
+  .hero-kicker{
+    font-size:18px;
+  }
+
+  .about-copy h1{
+    font-size:34px;
+    letter-spacing:-1px;
+  }
+
+  .about-copy p{
+    font-size:14px;
+    line-height:1.68;
+  }
+
+  .brand-content h2,
+  .numbers-intro h2,
+  .pricing-box h2{
+    font-size:28px;
+  }
+
+  .brand-features article{
+    grid-template-columns:50px 1fr;
+    gap:12px;
+  }
+
+  .icon-badge{
+    width:50px;
+    height:50px;
+    font-size:20px;
+  }
+
+  .brand-features h3{
+    font-size:19px;
+  }
+
+  .numbers-cards i{
+    font-size:52px;
+    margin-bottom:28px;
+  }
+
+  .numbers-cards strong{
+    font-size:30px;
+  }
+
+  .numbers-cards span{
+    font-size:14px;
+  }
+
+  .service-summary-grid article,
+  .fleet-card-item,
+  .faq-grid article{
+    padding:22px 18px;
+  }
+
+  .service-summary-grid h3,
+  .faq-grid h3{
+    font-size:20px;
+  }
+
+  .fleet-tabs{
+    gap:10px;
+  }
+
+  .fleet-tabs span{
+    flex:1 1 calc(50% - 5px);
+    min-width:unset;
+    padding:10px 14px;
+    font-size:12px;
+  }
+
+  .fleet-card-item img{
+    height:182px;
+  }
+
+  .vf5-card img{
+    height:172px;
+  }
+
+  .limo-card img{
+    height:186px;
+  }
+
+  .reasons-grid{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+
+  .reasons-grid p{
+    max-width:none;
   }
 }
