@@ -1,32 +1,47 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Minh Tuấn Car Service - Cho thuê xe tự lái tại Tân Uyên</title>
-  <meta name="description" content="Minh Tuấn Car Service chuyên cho thuê xe tự lái, xe có tài, thuê xe đi tỉnh, thuê xe theo ngày/tháng tại Tân Uyên, Bình Dương (cũ), TPHCM với đội xe thực tế gồm VF5 Plus 5 chỗ và Limo Green 7 chỗ." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css?v=scroll-reveal-9" />
+  <meta
+    name="description"
+    content="Minh Tuấn Car Service chuyên cho thuê xe tự lái, xe có tài, thuê xe đi tỉnh, thuê xe theo ngày/tháng tại Tân Uyên, Bình Dương (cũ), TPHCM với đội xe thực tế gồm VF5 Plus 5 chỗ và Limo Green 7 chỗ."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="./style.css?v=responsive-20260513" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  <link rel="icon" href="./assets/fav.png" type="image/x-icon">
-  <script src="./site.js?v=scroll-reveal-9" defer></script>
+  <link rel="icon" href="./assets/fav.png" type="image/x-icon" />
+  <script src="./site.js?v=responsive-20260513" defer></script>
 </head>
 <body>
   <div class="topbar">
     <div class="container topbar-inner">
       <div class="top-left">
-        <span class="contact-item"><i class="fa-solid fa-phone"></i><span>0867 922 174</span></span>
-        <span class="contact-item"><i class="fa-solid fa-envelope"></i><span>nguyentuanw135@gmail.com</span></span>
-        <span class="contact-item"><i class="fa-solid fa-location-dot"></i><span>Tân Uyên, Bình Dương (cũ), TPHCM và khu vực lân cận</span></span>
+        <a class="contact-item" href="tel:0867922174">
+          <i class="fa-solid fa-phone" aria-hidden="true"></i>
+          <span>0867 922 174</span>
+        </a>
+        <a class="contact-item" href="mailto:nguyentuanw135@gmail.com">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+          <span>nguyentuanw135@gmail.com</span>
+        </a>
+        <span class="contact-item">
+          <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+          <span>Tân Uyên, Bình Dương (cũ), TPHCM và khu vực lân cận</span>
+        </span>
       </div>
-      <div class="socials">
+      <div class="socials" aria-label="Mạng xã hội">
         <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-          <img src="assets/icon_fb.png" alt="Facebook">
+          <img src="./assets/icon_fb.png" alt="" loading="lazy" />
         </a>
         <a href="https://zalo.me/0867922174" target="_blank" rel="noopener noreferrer" aria-label="Zalo">
-          <img src="assets/Icon_of_Zalo.png" alt="Zalo">
+          <img src="./assets/Icon_of_Zalo.png" alt="" loading="lazy" />
         </a>
       </div>
     </div>
@@ -34,23 +49,43 @@
 
   <header class="header">
     <div class="container nav-wrap">
-      <a href="#" class="logo-link">
-        <img src="./assets/logo.png" alt="Minh Tuấn Car Service" class="logo">
+      <a href="./index.html#top" class="logo-link" aria-label="Trang chủ Minh Tuấn Car Service">
+        <img src="./assets/logo.png" alt="Minh Tuấn Car Service" class="logo" />
       </a>
-      <nav class="nav">
-        <a class="active" href="#top">TRANG CHỦ</a>
-        <a href="gioi-thieu.html">GIỚI THIỆU</a>
-        <a href="#services">DỊCH VỤ</a>
-        <a href="#price">BẢNG GIÁ</a>
-        <a href="#cars">XE ĐỜI MỚI</a>
-        <a href="#blog">KINH NGHIỆM</a>
-        <a href="#contact">LIÊN HỆ</a>
-      </nav>
-      <a class="phone-btn" href="tel:0867922174"><i class="fa-solid fa-phone"></i><span>0867 922 174</span></a>
+
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-nav"
+        aria-label="Mở menu điều hướng"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-panel" id="site-nav-panel">
+        <nav class="nav" id="site-nav" aria-label="Điều hướng chính">
+          <a class="active" href="#top" aria-current="page">TRANG CHỦ</a>
+          <a href="./gioi-thieu.html">GIỚI THIỆU</a>
+          <a href="#services">DỊCH VỤ</a>
+          <a href="#price">BẢNG GIÁ</a>
+          <a href="#cars">XE ĐỜI MỚI</a>
+          <a href="#blog">KINH NGHIỆM</a>
+          <a href="#contact">LIÊN HỆ</a>
+        </nav>
+        <a class="phone-btn header-cta" href="tel:0867922174">
+          <i class="fa-solid fa-phone" aria-hidden="true"></i>
+          <span>0867 922 174</span>
+        </a>
+      </div>
     </div>
   </header>
 
-  <main>
+  <div class="nav-backdrop" hidden></div>
+
+  <main id="main-content">
     <section class="hero" id="top">
       <div class="hero-bg"></div>
       <div class="hero-angle"></div>
@@ -58,73 +93,85 @@
         <div class="hero-content">
           <div class="pill">DỊCH VỤ CHO THUÊ XE UY TÍN - TẬN TÂM - CHUYÊN NGHIỆP</div>
           <h1><span>MINH TUẤN</span> CAR SERVICE</h1>
-          <p class="hero-desc">Chuyên cho thuê xe tự lái, xe có tài, thuê xe đi tỉnh, thuê xe theo ngày/tháng tại Bình Dương (cũ), TPHCM và khu vực lân cận với 2 dòng xe hiện có là VF5 Plus 5 chỗ và Limo Green 7 chỗ.</p>
+          <p class="hero-desc">
+            Chuyên cho thuê xe tự lái, xe có tài, thuê xe đi tỉnh, thuê xe theo ngày/tháng tại Bình Dương (cũ),
+            TPHCM và khu vực lân cận với 2 dòng xe hiện có là VF5 Plus 5 chỗ và Limo Green 7 chỗ.
+          </p>
 
-          <div class="features">
+          <div class="features" aria-label="Điểm nổi bật">
             <div class="feature-item">
-              <div class="feature-icon"><i class="fa-solid fa-car-side"></i></div>
+              <div class="feature-icon"><i class="fa-solid fa-car-side" aria-hidden="true"></i></div>
               <b>Xe đời mới</b>
               <span>Sạch sẽ</span>
             </div>
             <div class="feature-item">
-              <div class="feature-icon"><i class="fa-solid fa-wallet"></i></div>
+              <div class="feature-icon"><i class="fa-solid fa-wallet" aria-hidden="true"></i></div>
               <b>Giá cả</b>
-              <span>cạnh tranh</span>
+              <span>Cạnh tranh</span>
             </div>
             <div class="feature-item">
-              <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+              <div class="feature-icon"><i class="fa-solid fa-bolt" aria-hidden="true"></i></div>
               <b>Thủ tục đơn giản</b>
               <span>Nhanh chóng</span>
             </div>
             <div class="feature-item">
-              <div class="feature-icon"><i class="fa-solid fa-headset"></i></div>
+              <div class="feature-icon"><i class="fa-solid fa-headset" aria-hidden="true"></i></div>
               <b>Hỗ trợ 24/7</b>
               <span>Tận tâm</span>
             </div>
           </div>
 
           <div class="hero-actions">
-            <a class="btn primary" href="#services"><i class="fa-solid fa-magnifying-glass"></i><span>XEM DỊCH VỤ</span></a>
-            <a class="btn outline" href="tel:0867922174"><i class="fa-solid fa-phone"></i><span>LIÊN HỆ NGAY</span></a>
+            <a class="btn primary" href="#services">
+              <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+              <span>XEM DỊCH VỤ</span>
+            </a>
+            <a class="btn outline" href="tel:0867922174">
+              <i class="fa-solid fa-phone" aria-hidden="true"></i>
+              <span>LIÊN HỆ NGAY</span>
+            </a>
           </div>
         </div>
 
         <div class="hero-car-wrap">
-          <img src="./assets/vf5-plus.png" alt="VinFast VF5 Plus 5 chỗ" class="hero-car">
+          <img src="./assets/vf5-plus.png" alt="VinFast VF5 Plus 5 chỗ" class="hero-car" />
         </div>
       </div>
     </section>
 
-    <section class="search-section">
+    <section class="search-section" aria-labelledby="quick-search-title">
       <div class="container">
-        <form class="search-box">
+        <form class="search-box" id="quick-search">
           <div class="search-heading">
-            <h2>TÌM XE NHANH CHÓNG</h2>
+            <h2 id="quick-search-title">TÌM XE NHANH CHÓNG</h2>
             <p>Chọn thông tin để chúng tôi gợi ý xe phù hợp cho bạn</p>
           </div>
           <div class="search-grid">
-            <label>
+            <label for="service-type">
               <span>Loại dịch vụ</span>
-              <select>
+              <select id="service-type" name="service-type">
                 <option>Tự lái</option>
                 <option>Có tài</option>
                 <option>Đi tỉnh</option>
                 <option>Theo ngày/tháng</option>
               </select>
             </label>
-            <label>
+            <label for="pickup-date">
               <span>Ngày nhận xe</span>
-              <input type="text" placeholder="Chọn ngày" onfocus="this.type='date'">
+              <input id="pickup-date" name="pickup-date" type="date" />
             </label>
-            <label>
+            <label for="return-date">
               <span>Ngày trả xe</span>
-              <input type="text" placeholder="Chọn ngày" onfocus="this.type='date'">
+              <input id="return-date" name="return-date" type="date" />
             </label>
-            <label>
+            <label for="pickup-location">
               <span>Địa điểm nhận xe</span>
-              <input type="text" placeholder="Chọn địa điểm">
+              <input id="pickup-location" name="pickup-location" type="text" placeholder="Nhập địa điểm nhận xe" />
             </label>
-            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i><span>TÌM XE NGAY</span></button>
+            <button type="submit">
+              <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+              <span>TÌM XE NGAY</span>
+            </button>
           </div>
         </form>
       </div>
@@ -134,38 +181,38 @@
       <div class="container">
         <div class="section-title">
           <span>DỊCH VỤ CỦA CHÚNG TÔI</span>
-          <h2>Đa dạng dịch vụ – Phục vụ mọi nhu cầu</h2>
+          <h2>Đa dạng dịch vụ - Phục vụ mọi nhu cầu</h2>
           <p>Chúng tôi cung cấp giải pháp di chuyển linh hoạt, đáp ứng mọi nhu cầu của cá nhân, gia đình và doanh nghiệp.</p>
         </div>
 
         <div class="service-grid">
           <article class="service-card card-vf5">
-            <div class="circle-icon"><i class="fa-solid fa-car"></i></div>
+            <div class="circle-icon"><i class="fa-solid fa-car" aria-hidden="true"></i></div>
             <h3>Cho thuê xe tự lái</h3>
             <p>Tự do di chuyển, chủ động hành trình với VF5 Plus 5 chỗ nhỏ gọn, dễ lái và phù hợp đi cá nhân hoặc gia đình nhỏ.</p>
-            <a href="#">Xem chi tiết →</a>
-            <img src="./assets/vf5-plus.png" alt="Cho thuê xe tự lái VF5 Plus 5 chỗ">
+            <a href="#contact">Xem chi tiết</a>
+            <img src="./assets/vf5-plus.png" alt="Cho thuê xe tự lái VF5 Plus 5 chỗ" loading="lazy" />
           </article>
           <article class="service-card card-limo">
-            <div class="circle-icon"><i class="fa-solid fa-user-tie"></i></div>
+            <div class="circle-icon"><i class="fa-solid fa-user-tie" aria-hidden="true"></i></div>
             <h3>Cho thuê xe có tài</h3>
             <p>Limo Green 7 chỗ rộng rãi, thoải mái, phù hợp đưa đón gia đình, đi công việc hoặc đón tiếp khách hàng.</p>
-            <a href="#">Xem chi tiết →</a>
-            <img src="./assets/limo-green-7c-xam.png" alt="Cho thuê xe có tài Limo Green 7 chỗ">
+            <a href="#contact">Xem chi tiết</a>
+            <img src="./assets/limo-green-7c-xam.png" alt="Cho thuê xe có tài Limo Green 7 chỗ" loading="lazy" />
           </article>
           <article class="service-card card-limo">
-            <div class="circle-icon"><i class="fa-solid fa-road"></i></div>
+            <div class="circle-icon"><i class="fa-solid fa-road" aria-hidden="true"></i></div>
             <h3>Thuê xe đi tỉnh</h3>
             <p>Nhận hợp đồng đi các tỉnh thành với Limo Green 7 chỗ, không gian rộng và trải nghiệm ngồi thoải mái cho hành trình dài.</p>
-            <a href="#">Xem chi tiết →</a>
-            <img src="./assets/limo-green-7c-xam2.png" alt="Thuê xe đi tỉnh Limo Green 7 chỗ">
+            <a href="#contact">Xem chi tiết</a>
+            <img src="./assets/limo-green-7c-xam2.png" alt="Thuê xe đi tỉnh Limo Green 7 chỗ" loading="lazy" />
           </article>
           <article class="service-card card-vf5-red">
-            <div class="circle-icon"><i class="fa-solid fa-calendar-days"></i></div>
+            <div class="circle-icon"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i></div>
             <h3>Thuê xe theo ngày/tháng</h3>
             <p>Linh hoạt thời gian thuê với VF5 Plus 5 chỗ, phù hợp khách cá nhân hoặc doanh nghiệp cần xe ổn định theo ngày hoặc tháng.</p>
-            <a href="#">Xem chi tiết →</a>
-            <img src="./assets/vf5-plus-red.png" alt="Thuê xe theo ngày tháng VF5 Plus 5 chỗ">
+            <a href="#contact">Xem chi tiết</a>
+            <img src="./assets/vf5-plus-red.png" alt="Thuê xe theo ngày tháng VF5 Plus 5 chỗ" loading="lazy" />
           </article>
         </div>
       </div>
@@ -179,36 +226,36 @@
           <p>Chúng tôi hỗ trợ giao nhận xe tận nơi tại các khu vực sau:</p>
 
           <div class="chips">
-            <b><i class="fa-solid fa-location-dot"></i><span>Tân Uyên</span></b>
-            <b><i class="fa-solid fa-location-dot"></i><span>Bình Cơ</span></b>
-            <b><i class="fa-solid fa-location-dot"></i><span>Hội Nghĩa</span></b>
-            <b><i class="fa-solid fa-location-dot"></i><span>Thuận An</span></b>
-            <b><i class="fa-solid fa-location-dot"></i><span>Thuận Giao</span></b>
-            <b><i class="fa-solid fa-location-dot"></i><span>Bình Dương (cũ)</span></b>
-            <b><i class="fa-solid fa-location-dot"></i><span>TPHCM</span></b>
-            <b><i class="fa-solid fa-location-dot"></i><span>Khu vực lân cận</span></b>
+            <b><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>Tân Uyên</span></b>
+            <b><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>Bình Cơ</span></b>
+            <b><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>Hội Nghĩa</span></b>
+            <b><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>Thuận An</span></b>
+            <b><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>Thuận Giao</span></b>
+            <b><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>Bình Dương (cũ)</span></b>
+            <b><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>TPHCM</span></b>
+            <b><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>Khu vực lân cận</span></b>
           </div>
 
           <div class="stats">
             <div>
-              <i class="fa-solid fa-car-side"></i>
+              <i class="fa-solid fa-car-side" aria-hidden="true"></i>
               <strong>Tiết kiệm</strong>
-              <p>Xe đời mới<br>đa dạng</p>
+              <p>Xe đời mới<br />đa dạng</p>
             </div>
             <div>
-              <i class="fa-solid fa-users"></i>
+              <i class="fa-solid fa-users" aria-hidden="true"></i>
               <strong>4.5/5★</strong>
-              <p>Khách hàng<br>hài lòng</p>
+              <p>Khách hàng<br />hài lòng</p>
             </div>
             <div>
-              <i class="fa-solid fa-headset"></i>
+              <i class="fa-solid fa-headset" aria-hidden="true"></i>
               <strong>24/7</strong>
-              <p>Hỗ trợ khách hàng<br>mọi lúc</p>
+              <p>Hỗ trợ khách hàng<br />mọi lúc</p>
             </div>
             <div>
-              <i class="fa-solid fa-user-shield"></i>
+              <i class="fa-solid fa-user-shield" aria-hidden="true"></i>
               <strong>Uy tín</strong>
-              <p>Đặt chữ tín<br>lên hàng đầu</p>
+              <p>Đặt chữ tín<br />lên hàng đầu</p>
             </div>
           </div>
         </div>
@@ -225,35 +272,35 @@
         <div class="commit-grid" id="cars">
           <article>
             <div class="commit-icon">
-              <img src="./assets/xe.png" alt="Xe đời mới - Sạch sẽ">
+              <img src="./assets/xe.png" alt="Xe đời mới - sạch sẽ" loading="lazy" />
             </div>
             <h3>Xe đời mới - Sạch sẽ</h3>
             <p>Đội xe được bảo dưỡng định kỳ, đảm bảo an toàn và tiện nghi.</p>
           </article>
           <article>
             <div class="commit-icon">
-              <img src="./assets/gia_ca_canh_tranh.png" alt="Giá cả cạnh tranh">
+              <img src="./assets/gia_ca_canh_tranh.png" alt="Giá cả cạnh tranh" loading="lazy" />
             </div>
             <h3>Giá cả cạnh tranh</h3>
             <p>Bảng giá minh bạch, hợp lý, không phát sinh chi phí.</p>
           </article>
           <article>
             <div class="commit-icon">
-              <img src="./assets/thu_tuc_don_gian.png" alt="Thủ tục đơn giản">
+              <img src="./assets/thu_tuc_don_gian.png" alt="Thủ tục đơn giản" loading="lazy" />
             </div>
             <h3>Thủ tục đơn giản</h3>
             <p>Đặt xe nhanh chóng, nhận xe dễ dàng chỉ với giấy tờ cơ bản.</p>
           </article>
           <article>
             <div class="commit-icon">
-              <img src="./assets/ho_tro_tan_tam.png" alt="Hỗ trợ tận tâm">
+              <img src="./assets/ho_tro_tan_tam.png" alt="Hỗ trợ tận tâm" loading="lazy" />
             </div>
             <h3>Hỗ trợ tận tâm</h3>
             <p>Đội ngũ tư vấn nhiệt tình, hỗ trợ 24/7 mọi lúc mọi nơi.</p>
           </article>
           <article>
             <div class="commit-icon">
-              <img src="./assets/an_toan.png" alt="An toàn tuyệt đối">
+              <img src="./assets/an_toan.png" alt="An toàn tuyệt đối" loading="lazy" />
             </div>
             <h3>An toàn tuyệt đối</h3>
             <p>Bảo hiểm đầy đủ, hỗ trợ xử lý sự cố nhanh chóng.</p>
@@ -265,13 +312,19 @@
     <section class="cta" id="contact">
       <div class="container">
         <div class="cta-box">
-          <img src="./assets/vf5-plus.png" alt="VF5 Plus">
+          <img src="./assets/vf5-plus.png" alt="VF5 Plus" loading="lazy" />
           <div class="cta-copy">
             <h2>Sẵn sàng cho hành trình của bạn?</h2>
-            <p>Liên hệ ngay với Minh Tuấn Car Service để được tư vấn và báo giá tốt nhất!</p>
+            <p>Liên hệ ngay với Minh Tuấn Car Service để được tư vấn và báo giá tốt nhất.</p>
             <div class="cta-actions">
-              <a href="tel:0867922174"><i class="fa-solid fa-phone"></i> <span>0867 922 174</span></a>
-              <a href="https://zalo.me/0867922174" target="_blank" rel="noopener noreferrer"><img src="assets/Icon_of_Zalo.png" alt="Zalo"><span>0867 922 174</span></a>
+              <a href="tel:0867922174">
+                <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                <span>0867 922 174</span>
+              </a>
+              <a href="https://zalo.me/0867922174" target="_blank" rel="noopener noreferrer">
+                <img src="./assets/Icon_of_Zalo.png" alt="" loading="lazy" />
+                <span>0867 922 174</span>
+              </a>
             </div>
           </div>
         </div>
@@ -282,38 +335,52 @@
   <footer class="footer">
     <div class="container footer-grid" id="blog">
       <div class="footer-brand">
-        <img src="./assets/logo.png" alt="Minh Tuấn Car Service">
-        <p>Chuyên cung cấp dịch vụ cho thuê xe tự lái, xe có tài, thuê xe đi tỉnh, thuê xe theo ngày/tháng uy tín tại Bình Dương (cũ), TPHCM và khu vực lân cận với đội xe hiện có gồm VF5 Plus 5 chỗ và Limo Green 7 chỗ.</p>
+        <img src="./assets/logo.png" alt="Minh Tuấn Car Service" loading="lazy" />
+        <p>
+          Chuyên cung cấp dịch vụ cho thuê xe tự lái, xe có tài, thuê xe đi tỉnh, thuê xe theo ngày/tháng uy tín tại
+          Bình Dương (cũ), TPHCM và khu vực lân cận với đội xe hiện có gồm VF5 Plus 5 chỗ và Limo Green 7 chỗ.
+        </p>
       </div>
       <div>
         <h4>LIÊN KẾT NHANH</h4>
-        <a href="#">› Trang chủ</a>
-        <a href="#">› Giới thiệu</a>
-        <a href="#">› Dịch vụ</a>
-        <a href="#">› Bảng giá</a>
-        <a href="#">› Xe đời mới</a>
-        <a href="#">› Kinh nghiệm</a>
-        <a href="#">› Liên hệ</a>
+        <a href="./index.html#top">Trang chủ</a>
+        <a href="./gioi-thieu.html">Giới thiệu</a>
+        <a href="#services">Dịch vụ</a>
+        <a href="#price">Bảng giá</a>
+        <a href="#cars">Xe đời mới</a>
+        <a href="#contact">Liên hệ</a>
       </div>
       <div>
         <h4>DỊCH VỤ</h4>
-        <a href="#">› Cho thuê xe tự lái</a>
-        <a href="#">› Cho thuê xe có tài</a>
-        <a href="#">› Thuê xe đi tỉnh</a>
-        <a href="#">› Thuê xe theo ngày/tháng</a>
+        <a href="#services">Cho thuê xe tự lái</a>
+        <a href="#services">Cho thuê xe có tài</a>
+        <a href="#services">Thuê xe đi tỉnh</a>
+        <a href="#services">Thuê xe theo ngày/tháng</a>
       </div>
       <div class="footer-lh">
         <h4>THÔNG TIN LIÊN HỆ</h4>
-        <p><i class="fa-solid fa-phone"></i> <span>0867 922 174</span></p>
-        <p><i class="fa-solid fa-envelope"></i> <span>nguyentuanw135@gmail.com</span></p>
-        <p><i class="fa-solid fa-map-marker-alt"></i> <span>Tân Uyên, Bình Dương (cũ), TPHCM và khu vực lân cận</span></p>
-        <p><i class="fas fa-globe"></i> <span>xetulaitanuyen.com</span></p>
+        <p>
+          <i class="fa-solid fa-phone" aria-hidden="true"></i>
+          <a href="tel:0867922174">0867 922 174</a>
+        </p>
+        <p>
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+          <a href="mailto:nguyentuanw135@gmail.com">nguyentuanw135@gmail.com</a>
+        </p>
+        <p>
+          <i class="fa-solid fa-map-marker-alt" aria-hidden="true"></i>
+          <span>Tân Uyên, Bình Dương (cũ), TPHCM và khu vực lân cận</span>
+        </p>
+        <p>
+          <i class="fas fa-globe" aria-hidden="true"></i>
+          <a href="https://xetulaitanuyen.com" target="_blank" rel="noopener noreferrer">xetulaitanuyen.com</a>
+        </p>
         <div class="footer-social">
           <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-            <img src="assets/icon_fb.png" alt="Facebook">
+            <img src="./assets/icon_fb.png" alt="" loading="lazy" />
           </a>
           <a href="https://zalo.me/0867922174" target="_blank" rel="noopener noreferrer" aria-label="Zalo">
-            <img src="assets/Icon_of_Zalo.png" alt="Zalo">
+            <img src="./assets/Icon_of_Zalo.png" alt="" loading="lazy" />
           </a>
         </div>
       </div>
@@ -321,6 +388,8 @@
     <div class="copyright">© 2024 Minh Tuấn Car Service. All rights reserved.</div>
   </footer>
 
-  <a href="#top" class="to-top" aria-label="Lên đầu trang"><i class="fa-solid fa-chevron-up"></i></a>
+  <a href="#top" class="to-top" aria-label="Lên đầu trang">
+    <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>
+  </a>
 </body>
 </html>
