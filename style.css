@@ -1934,8 +1934,8 @@ section[id]{scroll-margin-top:128px}
   }
 
   .nav-wrap{
-    min-height:80px;
-    padding:14px 0;
+ height: 50px !important;
+
     gap:12px;
   }
 
