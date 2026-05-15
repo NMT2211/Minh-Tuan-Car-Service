@@ -3,7 +3,61 @@
   const header = document.querySelector(".header");
   const toTop = document.querySelector(".to-top");
   const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const navLinks = Array.from(document.querySelectorAll(".nav a"));
+
+  function ensureResponsiveHeaderControls() {
+    if (!header) {
+      return {
+        nav: null,
+        menuToggle: null,
+      };
+    }
+
+    const navWrap = header.querySelector(".nav-wrap");
+    const nav = header.querySelector(".nav");
+    if (!navWrap || !nav) {
+      return {
+        nav,
+        menuToggle: null,
+      };
+    }
+
+    let headerActions = navWrap.querySelector(".header-actions");
+    const phoneButton = navWrap.querySelector(".phone-btn");
+
+    if (!headerActions) {
+      headerActions = document.createElement("div");
+      headerActions.className = "header-actions";
+
+      if (phoneButton) {
+        headerActions.appendChild(phoneButton);
+      }
+
+      navWrap.insertBefore(headerActions, nav);
+    }
+
+    let menuToggle = headerActions.querySelector(".menu-toggle");
+    if (!menuToggle) {
+      menuToggle = document.createElement("button");
+      menuToggle.type = "button";
+      menuToggle.className = "menu-toggle";
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Mở menu điều hướng");
+      menuToggle.innerHTML = "<span></span><span></span><span></span>";
+      headerActions.appendChild(menuToggle);
+    }
+
+    if (!nav.id) {
+      nav.id = "primary-nav";
+    }
+
+    nav.setAttribute("aria-hidden", "false");
+    menuToggle.setAttribute("aria-controls", nav.id);
+
+    return { nav, menuToggle };
+  }
+
+  const { nav: primaryNav, menuToggle } = ensureResponsiveHeaderControls();
+  const navLinks = Array.from((primaryNav || document.querySelector(".nav"))?.querySelectorAll("a") || []);
   const heroCarWrap = document.querySelector(".hero-car-wrap");
   const aboutCars = document.querySelector(".about-cars");
   const sectionLinks = navLinks.filter((link) => {
@@ -14,6 +68,47 @@
     .map((link) => document.querySelector(link.getAttribute("href")))
     .filter(Boolean);
   const revealRegistry = new Set();
+
+  function setMenuOpen(nextState) {
+    if (!header || !menuToggle || !primaryNav) return;
+
+    const isMobileMenu = window.innerWidth <= 1023;
+    const shouldOpen = Boolean(nextState) && isMobileMenu;
+
+    header.classList.toggle("menu-open", shouldOpen);
+    document.body.classList.toggle("menu-open", shouldOpen);
+    menuToggle.setAttribute("aria-expanded", String(shouldOpen));
+    primaryNav.setAttribute("aria-hidden", String(!shouldOpen && isMobileMenu));
+  }
+
+  function closeMenu() {
+    setMenuOpen(false);
+  }
+
+  function initMenu() {
+    if (!header || !menuToggle || !primaryNav) return;
+
+    menuToggle.addEventListener("click", () => {
+      setMenuOpen(!header.classList.contains("menu-open"));
+    });
+
+    primaryNav.addEventListener("click", (event) => {
+      if (!event.target.closest("a")) return;
+      closeMenu();
+    });
+
+    document.addEventListener("click", (event) => {
+      if (window.innerWidth > 1023) return;
+      if (!header.classList.contains("menu-open")) return;
+      if (header.contains(event.target)) return;
+      closeMenu();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+      closeMenu();
+    });
+  }
 
   function setCurrentNav(currentId) {
     navLinks.forEach((link) => {
@@ -171,6 +266,7 @@
 
   function scheduleDriveIn(element, delay = 0) {
     if (!element) return;
+    if (reduceMotionQuery.matches || window.innerWidth <= 767) return;
 
     const start = () => activateDriveIn(element, delay);
 
@@ -269,6 +365,7 @@
 
       event.preventDefault();
       scrollToHash(href);
+      closeMenu();
 
       if (href && href !== "#") {
         history.replaceState(null, "", href);
@@ -278,6 +375,8 @@
 
   function init() {
     lockMediaInteractions();
+    initMenu();
+    closeMenu();
     initRevealObserver();
     scheduleDriveIn(heroCarWrap, 140);
     scheduleDriveIn(aboutCars, 180);
@@ -295,6 +394,9 @@
     );
 
     window.addEventListener("resize", () => {
+      if (window.innerWidth > 1023) {
+        closeMenu();
+      }
       updateHeaderState();
       updateActiveSection();
     });
