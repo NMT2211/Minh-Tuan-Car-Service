@@ -627,7 +627,7 @@ button,
 }
 
 /* commit */
-.commit{padding:0 0 48px;background:#fff}.commit .section-title{text-align:center;margin-bottom:28px}.commit .section-title span{display:inline-block;margin-bottom:10px;color:#007b28;font-size:12px;font-weight:700;text-transform:uppercase;background:transparent;padding:0}.commit .section-title h2{margin:0;color:#111;font-size:34px;font-weight:700;line-height:1.25;letter-spacing:-.4px}.commit-grid{display:grid;grid-template-columns:repeat(5,1fr);background:#fff;border:1px solid #e7eee9;border-radius:8px;box-shadow:0 10px 26px rgba(0,0,0,.045);overflow:hidden}.commit-grid article{min-height:172px;padding:28px 20px 24px;text-align:center;background:#fff;border-right:1px solid #e7eee9}.commit-grid article:last-child{border-right:none}.commit-icon{width:64px;height:64px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center}.commit-icon img{width:100%;height:100%;object-fit:contain;display:block}.commit-grid h3{margin:0 0 10px;color:#111;font-size:15px;font-weight:700;line-height:1.35}.commit-grid p{margin:0 auto;max-width:190px;color:#343f38;font-size:13px;font-weight:500;line-height:1.55}
+.commit{padding:0 0 48px;background:#fff}.commit .section-title{text-align:center;margin-bottom:28px}.commit .section-title span{display:inline-block;margin-bottom:10px;color:#007b28;font-size:12px;font-weight:700;text-transform:uppercase;background:transparent;padding:0}.commit .section-title h2{margin:0;color:#111;font-size:34px;font-weight:700;line-height:1.25;letter-spacing:-.4px}.commit-grid{display:grid;grid-template-columns:repeat(5,1fr);background:#fff;border:1px solid #e7eee9;border-radius:8px;box-shadow:0 10px 26px rgba(0,0,0,.045);overflow:hidden}.commit-grid article{min-height:172px;padding:28px 20px 24px;text-align:center;background:#fff;border-right:1px solid #e7eee9}.commit-grid article:last-child{border-right:none}.commit-icon{width:64px;height:64px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center}.commit-icon img{width:100%;height:100%;object-fit:contain;display:block}.commit-grid h3{margin:0 0 10px;color:#111;font-size:14px !important;font-weight:700;line-height:1.35}.commit-grid p{margin:0 auto;max-width:190px;color:#343f38;font-size:13px;font-weight:500;line-height:1.55}
 
 /* CTA */
 .cta{padding:0 0 44px;background:#fff}.cta .container{width:min(1210px,calc(100% - 64px));margin:0 auto}.cta-box{min-height:190px;border-radius:10px;overflow:hidden;background:radial-gradient(circle at 20% 0%,#09ed5a,#10b54f 48%,#1a8f46 100%);color:#fff;display:grid;grid-template-columns:430px 1fr;align-items:center;gap:10px;padding:20px 62px 20px 45px;box-shadow:0 14px 28px rgba(0,80,30,.18)}.cta-box>img{width:360px;height:auto;object-fit:contain;filter:drop-shadow(0 24px 20px rgba(0,0,0,.38))}.cta-box h2{margin:0;color:#fff;font-size:36px;font-weight:700;line-height:1.25}.cta-box p{margin:12px 0 22px;color:rgba(255,255,255,.9);font-size:15px;line-height:1.6}.cta-actions{display:flex;align-items:center;gap:20px}.cta-actions a{min-width:210px;height:54px;padding:0 22px;border-radius:8px;background:#fff;color:#007a2b;display:inline-flex;align-items:center;justify-content:center;gap:10px;font-size:17px;font-weight:700;text-decoration:none;box-shadow:0 8px 18px rgba(0,0,0,.12)}.cta-actions a:hover{box-shadow:0 8px 18px rgba(0,0,0,.12)}.cta-actions a i{color:#007a2b;font-size:18px}.cta-actions a img{width:32px;height:32px;object-fit:contain;display:block}.cta-actions a:nth-child(2){color:#1287d7}
@@ -1007,6 +1007,9 @@ button,
 
   .topbar{
     font-size:12px;
+  }
+  .commit-grid p {
+    font-size: 11px !important;
   }
 
   .topbar-inner{
@@ -1845,7 +1848,7 @@ section[id]{scroll-margin-top:128px}
 
   .commit-grid{
     grid-template-columns:repeat(2, minmax(0, 1fr));
-    gap:20px;
+    gap:14px;
     background:transparent;
     border:none;
     border-radius:0;
@@ -1854,28 +1857,49 @@ section[id]{scroll-margin-top:128px}
   }
 
   .commit-grid article{
-    min-height:100%;
-    padding:28px 24px;
+    min-height:150px;
+    padding:20px 16px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
     border:1px solid #e7eee9;
-    border-radius:20px;
-    box-shadow:0 10px 24px rgba(0,0,0,.045);
+    border-radius:22px;
+    box-shadow:0 8px 20px rgba(0,0,0,.04);
+    text-align:center;
   }
 
-  .commit-grid article:last-child,
   .commit-grid article:nth-child(2n){
     border-right:1px solid #e7eee9;
     border-bottom:1px solid #e7eee9;
     grid-column:auto;
   }
 
+  .commit-grid article:last-child{
+    border-right:1px solid #e7eee9;
+    border-bottom:1px solid #e7eee9;
+    grid-column:1 / -1;
+    min-height:132px;
+  }
+
   .commit-icon{
-    width:68px;
-    height:68px;
-    margin-bottom:18px;
+    width:58px;
+    height:58px;
+    margin-bottom:12px;
   }
 
   .commit-grid h3{
-    font-size:17px;
+    margin:0 0 8px;
+    font-size:15px;
+    line-height:1.35;
+    text-wrap:balance;
+  }
+
+  .commit-grid p{
+    max-width:230px;
+    margin:0 auto;
+    font-size:13px;
+    line-height:1.5;
   }
 
   .cta-box{
@@ -2040,7 +2064,7 @@ section[id]{scroll-margin-top:128px}
 
   .features{
     grid-template-columns:repeat(2, minmax(0, 1fr));
-    gap:10px;
+    gap:8px;
     padding:0;
     background:transparent;
     border-radius:0;
@@ -2048,18 +2072,18 @@ section[id]{scroll-margin-top:128px}
 
   .feature-item{
     display:grid;
-    grid-template-columns:54px 1fr;
+    grid-template-columns:46px 1fr;
     grid-template-areas:
       "icon title"
       "icon desc";
     align-items:start;
-    column-gap:12px;
-    row-gap:4px;
-    min-height:96px;
-    padding:14px 12px;
+    column-gap:10px;
+    row-gap:2px;
+    min-height:86px;
+    padding:12px 10px;
     text-align:left;
     border:none;
-    border-radius:20px;
+    border-radius:18px;
     background:rgba(255,255,255,.92);
     backdrop-filter:blur(8px);
     box-shadow:0 14px 28px rgba(0,0,0,.06);
@@ -2072,14 +2096,14 @@ section[id]{scroll-margin-top:128px}
 
   .feature-icon{
     grid-area:icon;
-    width:54px;
-    height:54px;
+    width:46px;
+    height:46px;
     margin:0;
     display:grid;
     place-items:center;
-    border-radius:16px;
+    border-radius:14px;
     background:rgba(198,228,107,.18);
-    font-size:24px;
+    font-size:20px;
   }
 
   .feature-item b{
@@ -2087,8 +2111,8 @@ section[id]{scroll-margin-top:128px}
     display:block;
     margin:2px 0 0;
     color:#17351f;
-    font-size:18px;
-    line-height:1.35;
+    font-size:15px;
+    line-height:1.28;
     font-weight:700;
   }
 
@@ -2096,8 +2120,8 @@ section[id]{scroll-margin-top:128px}
     grid-area:desc;
     display:block;
     color:#5c685f;
-    font-size:13px;
-    line-height:1.55;
+    font-size:11px;
+    line-height:1.4;
     font-weight:600;
   }
 
@@ -2129,6 +2153,15 @@ section[id]{scroll-margin-top:128px}
     grid-template-columns:1fr;
   }
 
+  .commit-grid{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:14px;
+  }
+
+  .commit-grid article:last-child{
+    grid-column:1 / -1;
+  }
+
   .service-grid{
     grid-template-columns:1fr;
     gap:14px;
@@ -2140,6 +2173,7 @@ section[id]{scroll-margin-top:128px}
 
   .section-title h2{
     font-size:clamp(1.8rem, 6vw, 2rem);
+    text-wrap:balance;
   }
 
   .services .section-title{
@@ -2154,6 +2188,7 @@ section[id]{scroll-margin-top:128px}
   .services .section-title h2{
     margin:10px 0 8px;
     line-height:1.16;
+    text-wrap:balance;
   }
 
   .services .section-title p{
@@ -2165,7 +2200,7 @@ section[id]{scroll-margin-top:128px}
 
   .service-card{
     display:grid;
-    grid-template-columns:52px minmax(0, 1fr) 110px;
+    grid-template-columns:52px minmax(0, 1fr) 98px;
     grid-template-areas:
       "icon title image"
       "desc desc image"
@@ -2188,7 +2223,7 @@ section[id]{scroll-margin-top:128px}
   .service-card h3{
     grid-area:title;
     margin:0;
-    font-size:17px;
+    font-size:16px;
     line-height:1.2;
     align-self:center;
     white-space:nowrap;
@@ -2212,13 +2247,13 @@ section[id]{scroll-margin-top:128px}
     justify-self:end;
     align-self:center;
     width:100%;
-    height:98px;
+    height:90px;
     margin-top:0;
   }
 
   .service-card.card-limo img,
   .service-card.card-vf5-red img{
-    height:100px;
+    height:92px;
   }
 
   .area-box{
@@ -2375,25 +2410,25 @@ section[id]{scroll-margin-top:128px}
   }
 
   .feature-item{
-    grid-template-columns:48px 1fr;
-    column-gap:10px;
-    min-height:124px;
-    padding:14px 12px;
+    grid-template-columns:42px 1fr;
+    column-gap:8px;
+    min-height:78px;
+    padding:10px 9px;
   }
 
   .feature-icon{
-    width:48px;
-    height:48px;
-    border-radius:14px;
-    font-size:22px;
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    font-size:18px;
   }
 
   .feature-item b{
-    font-size:16px;
+    font-size:14px;
   }
 
   .feature-item span{
-    font-size:12px;
+    font-size:10px;
   }
 
   .service-card{
@@ -2444,12 +2479,43 @@ section[id]{scroll-margin-top:128px}
   .service-card h3,
   .commit-grid h3{
     font-size:18px;
+    text-wrap:balance;
   }
 
   .service-card p,
   .commit-grid p,
   .cta-box p{
     font-size:14px;
+  }
+
+  .commit-grid{
+    gap:12px;
+  }
+
+  .commit-grid article{
+    min-height:142px;
+    padding:18px 14px;
+    border-radius:20px;
+  }
+
+  .commit-grid article:last-child{
+    min-height:126px;
+  }
+
+  .commit-icon{
+    width:54px;
+    height:54px;
+    margin-bottom:10px;
+  }
+
+  .commit-grid h3{
+    font-size:15px;
+    line-height:1.32;
+  }
+
+  .commit-grid p{
+    font-size:12px;
+    line-height:1.45;
   }
 
   .to-top{
