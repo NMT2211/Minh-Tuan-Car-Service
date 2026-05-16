@@ -57,7 +57,7 @@
   }
 
   const { nav: primaryNav, menuToggle } = ensureResponsiveHeaderControls();
-  const navLinks = Array.from((primaryNav || document.querySelector(".nav"))?.querySelectorAll("a") || []);
+  const navLinks = Array.from(document.querySelectorAll(".nav a, .mobile-bottom-nav a"));
   const heroCarWrap = document.querySelector(".hero-car-wrap");
   const aboutCars = document.querySelector(".about-cars");
   const sectionLinks = navLinks.filter((link) => {
