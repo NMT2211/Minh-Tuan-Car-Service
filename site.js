@@ -254,9 +254,14 @@
     });
   }
 
+  function prepareDriveIn(element) {
+    if (!element) return;
+    element.classList.add("drive-in-ready");
+  }
+
   function activateDriveIn(element, delay = 0) {
     if (!element || element.classList.contains("drive-in-active")) return;
-    element.classList.add("drive-in-ready");
+    prepareDriveIn(element);
     window.setTimeout(() => {
       window.requestAnimationFrame(() => {
         element.classList.add("drive-in-active");
@@ -266,7 +271,13 @@
 
   function scheduleDriveIn(element, delay = 0) {
     if (!element) return;
-    if (reduceMotionQuery.matches || window.innerWidth <= 767) return;
+    // Keep drive-in disabled on small screens, but allow it on desktop
+    // even when the OS/browser requests reduced motion.
+    if (window.innerWidth <= 767) return;
+
+    // Apply the off-screen starting state immediately so the vehicle
+    // does not flash in place before the drive-in animation begins.
+    prepareDriveIn(element);
 
     const start = () => activateDriveIn(element, delay);
 
