@@ -2023,7 +2023,7 @@ section[id]{scroll-margin-top:128px}
   }
 
   .hero{
-    padding:24px 0 10px;
+    padding:20px 0 8px;
   }
 
   .hero-bg{
@@ -2038,13 +2038,13 @@ section[id]{scroll-margin-top:128px}
 
   .hero-inner{
     grid-template-columns:1fr;
-    gap:12px;
+    gap:10px;
   }
 
   .pill{
     font-size:11px;
     padding:9px 12px;
-    margin-bottom:14px;
+    margin-bottom:12px;
   }
 
   .hero h1{
@@ -2054,9 +2054,9 @@ section[id]{scroll-margin-top:128px}
 
   .hero-desc{
     padding:0;
-    margin:10px 0 10px;
+    margin:8px 0;
     font-size:15px;
-    line-height:1.72;
+    line-height:1.64;
     background:transparent;
     border-radius:0;
     color:#17351f;
@@ -2064,7 +2064,7 @@ section[id]{scroll-margin-top:128px}
 
   .features{
     grid-template-columns:repeat(2, minmax(0, 1fr));
-    gap:8px;
+    gap:7px;
     padding:0;
     background:transparent;
     border-radius:0;
@@ -2079,8 +2079,8 @@ section[id]{scroll-margin-top:128px}
     align-items:start;
     column-gap:10px;
     row-gap:2px;
-    min-height:60px;
-    padding:12px 10px;
+    min-height:58px;
+    padding:10px 9px;
     text-align:left;
     border:none;
     border-radius:18px;
@@ -2111,7 +2111,7 @@ section[id]{scroll-margin-top:128px}
     display:block;
     margin:2px 0 0;
     color:#17351f;
-    font-size:14px;
+    font-size:13px;
     line-height:1.28;
     font-weight:700;
   }
@@ -2127,7 +2127,7 @@ section[id]{scroll-margin-top:128px}
 
   .hero-actions{
     grid-template-columns:repeat(2, minmax(0, 1fr));
-    gap:10px;
+    gap:8px;
   }
 
   .hero-car-wrap{
@@ -2139,11 +2139,22 @@ section[id]{scroll-margin-top:128px}
   }
 
   .search-section{
-    padding-bottom:28px;
+    padding-bottom:22px;
   }
 
   .search-box{
-    padding:22px 18px;
+    padding:18px 14px;
+  }
+
+  .search-grid{
+    gap:12px;
+  }
+
+  .services,
+  .area,
+  .commit,
+  .cta{
+    padding-bottom:44px;
   }
 
   .search-grid,
@@ -2164,11 +2175,11 @@ section[id]{scroll-margin-top:128px}
 
   .service-grid{
     grid-template-columns:1fr;
-    gap:14px;
+    gap:12px;
   }
 
   .section-title{
-    margin-bottom:24px;
+    margin-bottom:20px;
   }
 
   .section-title h2{
@@ -2178,15 +2189,15 @@ section[id]{scroll-margin-top:128px}
 
   .services .section-title{
     text-align:left;
-    margin-bottom:18px;
+    margin-bottom:14px;
   }
 
   .services .section-title span{
-    margin-bottom:8px;
+    margin-bottom:6px;
   }
 
   .services .section-title h2{
-    margin:10px 0 8px;
+    margin:8px 0 6px;
     line-height:1.16;
     text-wrap:balance;
   }
@@ -2206,10 +2217,10 @@ section[id]{scroll-margin-top:128px}
       "desc desc image"
       "link link image";
     align-items:start;
-    column-gap:12px;
-    row-gap:8px;
-    padding:18px 16px;
-    border-radius:24px;
+    column-gap:10px;
+    row-gap:7px;
+    padding:16px 14px;
+    border-radius:22px;
     min-height:0;
   }
 
@@ -2257,15 +2268,15 @@ section[id]{scroll-margin-top:128px}
   }
 
   .area-box{
-    padding:24px 14px 18px;
+    padding:20px 13px 16px;
     border-radius:24px;
   }
 
   .area-box h2{
-            font-size: 26px;
+    font-size:26px;
     line-height:1.18;
     text-align:left;
-    margin:10px 0 12px;
+    margin:8px 0 10px;
   }
 
   .area-box > span,
@@ -2274,15 +2285,15 @@ section[id]{scroll-margin-top:128px}
   }
 
   .area-box > p{
-    margin-bottom:18px;
+    margin-bottom:14px;
     font-size:13px;
     line-height:1.55;
   }
 
   .chips{
     grid-template-columns:repeat(2, minmax(0, 1fr));
-    gap:10px;
-    padding-bottom:16px;
+    gap:8px;
+    padding-bottom:14px;
   }
 
   .chips b{
@@ -2297,8 +2308,8 @@ section[id]{scroll-margin-top:128px}
 
   .stats{
     grid-template-columns:repeat(2, minmax(0, 1fr));
-    gap:10px;
-    margin-top:18px;
+    gap:8px;
+    margin-top:14px;
   }
 
   .stats div{
@@ -2307,9 +2318,9 @@ section[id]{scroll-margin-top:128px}
       "icon title"
       "desc desc";
     align-items:start;
-    column-gap:10px;
-    row-gap:8px;
-    padding:16px 14px;
+    column-gap:9px;
+    row-gap:7px;
+    padding:14px 12px;
     border:none;
     border-radius:18px;
     background:rgba(255,255,255,.08);
@@ -2344,12 +2355,12 @@ section[id]{scroll-margin-top:128px}
   }
 
   .commit-grid article{
-    padding:24px 20px;
+    padding:18px 14px;
   }
 
   .cta-box{
     grid-template-columns:1fr;
-    padding:24px 20px;
+    padding:22px 18px;
     text-align:left;
   }
 
@@ -2363,6 +2374,12 @@ section[id]{scroll-margin-top:128px}
 
   .cta-box p{
     font-size:15px;
+    margin:10px 0 18px;
+    line-height:1.55;
+  }
+
+  .cta-actions{
+    gap:10px;
   }
 
   .cta-actions a{
@@ -2371,7 +2388,8 @@ section[id]{scroll-margin-top:128px}
   }
 
   .footer-grid{
-    padding:36px 0 28px;
+    gap:22px 18px;
+    padding:28px 0 22px;
   }
 
   .footer p,
@@ -2406,14 +2424,14 @@ section[id]{scroll-margin-top:128px}
 
   .features{
     grid-template-columns:repeat(2, minmax(0, 1fr));
-    gap:10px;
+    gap:8px;
   }
 
   .feature-item{
     grid-template-columns:42px 1fr;
     column-gap:8px;
-    min-height:78px;
-    padding:10px 9px;
+    min-height:72px;
+    padding:9px 8px;
   }
 
   .feature-icon{
@@ -2460,7 +2478,7 @@ section[id]{scroll-margin-top:128px}
   }
 
   .search-box{
-    padding:20px 16px;
+    padding:18px 14px;
   }
 
   .search-grid input,
@@ -2473,7 +2491,7 @@ section[id]{scroll-margin-top:128px}
 
   .service-card,
   .commit-grid article{
-    padding:20px 16px;
+    padding:18px 14px;
   }
 
   .service-card h3,
