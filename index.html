@@ -104,34 +104,131 @@
 
     <section class="search-section">
       <div class="container">
-        <form class="search-box">
-          <div class="search-heading">
-            <h2>TÌM XE NHANH CHÓNG</h2>
-            <p>Chọn thông tin để chúng tôi gợi ý xe phù hợp cho bạn</p>
-          </div>
-          <div class="search-grid">
-            <label>
-              <span>Loại dịch vụ</span>
-              <select>
-                <option>Tự lái</option>
-                <option>Có tài</option>
-                <option>Đi tỉnh</option>
-                <option>Theo ngày/tháng</option>
-              </select>
-            </label>
-            <label>
-              <span>Ngày nhận xe</span>
-              <input type="text" placeholder="Chọn ngày" onfocus="this.type='date'">
-            </label>
-            <label>
-              <span>Ngày trả xe</span>
-              <input type="text" placeholder="Chọn ngày" onfocus="this.type='date'">
-            </label>
-            <label>
-              <span>Địa điểm nhận xe</span>
-              <input type="text" placeholder="Chọn địa điểm">
-            </label>
-            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i><span>TÌM XE NGAY</span></button>
+        <form class="search-box" id="lead-form" novalidate>
+          <div class="search-form-layout">
+            <div class="search-form-main">
+              <div class="search-heading">
+                <h2>ĐỂ LẠI THÔNG TIN</h2>
+                <p>Chỉ cần để lại thông tin cơ bản, đội ngũ của chúng tôi sẽ liên hệ tư vấn chi tiết và hỗ trợ bạn nhanh chóng.</p>
+              </div>
+              <div class="search-grid">
+                <div class="span-3">
+                  <div class="inputGroup">
+                    <input id="contact-phone" name="phone" type="tel" required autocomplete="off">
+                    <label for="contact-phone">Số điện thoại <b>*</b></label>
+                  </div>
+                </div>
+                <div class="span-3">
+                  <div class="inputGroup">
+                    <select id="service-type" name="service">
+                      <option value="" selected disabled></option>
+                      <option value="Tự lái">Tự lái</option>
+                      <option value="Có tài">Có tài</option>
+                      <option value="Đi tỉnh">Đi tỉnh</option>
+                      <option value="Theo ngày/tháng">Theo ngày/tháng</option>
+                    </select>
+                    <label for="service-type">Loại dịch vụ</label>
+                  </div>
+                </div>
+                 <div class="span-2">
+                  <div class="inputGroup">
+                    <input id="pickup-date" name="pickup_date" type="date" autocomplete="off">
+                    <label for="pickup-date">Ngày nhận xe</label>
+                  </div>
+                </div>
+                <div class="span-2">
+                  <div class="inputGroup">
+                    <input id="return-date" name="return_date" type="date" autocomplete="off">
+                    <label for="return-date">Ngày trả xe</label>
+                  </div>
+                </div>
+                <div class="span-2">
+                  <div class="inputGroup">
+                    <input id="pickup-location" name="pickup_location" type="text" autocomplete="off">
+                    <label for="pickup-location">Địa điểm nhận xe</label>
+                  </div>
+                </div>
+                <label class="span-6">
+                  <span>Ghi chú</span>
+                  <textarea id="customer-note" name="customer_note" rows="4" placeholder="Nhập yêu cầu hoặc ghi chú thêm (nếu có)"></textarea>
+                </label>
+                <div class="search-actions span-6">
+                  <button class="send-btn" type="submit">
+                    <div class="svg-wrapper-1">
+                      <div class="svg-wrapper">
+                        <svg
+                          stroke="#FFFFFF"
+                          fill="#FFFFFF"
+                          xml:space="preserve"
+                          viewBox="0 0 324.018 324.017"
+                          xmlns:xlink="http://www.w3.org/1999/xlink"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="34"
+                          height="34"
+                          aria-hidden="true"
+                        >
+                          <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
+                          <g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g>
+                          <g id="SVGRepo_iconCarrier">
+                            <g>
+                              <g>
+                                <path d="M317.833,197.111c3.346-11.148,2.455-20.541-2.65-27.945c-9.715-14.064-31.308-15.864-35.43-16.076l-8.077-4.352 l-0.528-0.217c-8.969-2.561-42.745-3.591-47.805-3.733c-7.979-3.936-14.607-7.62-20.475-10.879 c-20.536-11.413-34.107-18.958-72.959-18.958c-47.049,0-85.447,20.395-90.597,23.25c-2.812,0.212-5.297,0.404-7.646,0.59 l-6.455-8.733l7.34,0.774c2.91,0.306,4.267-1.243,3.031-3.459c-1.24-2.216-4.603-4.262-7.519-4.57l-23.951-2.524 c-2.91-0.305-4.267,1.243-3.026,3.459c1.24,2.216,4.603,4.262,7.519,4.57l3.679,0.386l8.166,11.05 c-13.823,1.315-13.823,2.139-13.823,4.371c0,18.331-2.343,22.556-2.832,23.369L0,164.443v19.019l2.248,2.89 c-0.088,2.775,0.823,5.323,2.674,7.431c5.981,6.804,19.713,7.001,21.256,7.001c4.634,0,14.211-2.366,20.78-4.153 c-0.456-0.781-0.927-1.553-1.3-2.392c-0.36-0.809-0.603-1.668-0.885-2.517c-0.811-2.485-1.362-5.096-1.362-7.845 c0-14.074,11.449-25.516,25.515-25.516s25.52,11.446,25.52,25.521c0,6.068-2.221,11.578-5.773,15.964 c-0.753,0.927-1.527,1.828-2.397,2.641c-1.022,0.958-2.089,1.859-3.254,2.641c29.332,0.109,112.164,0.514,168.708,1.771 c-0.828-0.823-1.533-1.771-2.237-2.703c-0.652-0.854-1.222-1.75-1.761-2.688c-2.164-3.744-3.5-8.025-3.5-12.655 c0-14.069,11.454-25.513,25.518-25.513c14.064,0,25.518,11.449,25.518,25.513c0,5.126-1.553,9.875-4.152,13.878 c-0.605,0.922-1.326,1.755-2.04,2.594c-0.782,0.922-1.616,1.781-2.527,2.584c5.209,0.155,9.699,0.232,13.546,0.232 c19.563,0,23.385-1.688,23.861-5.018C324.114,202.108,324.472,199.602,317.833,197.111z"></path>
+                                <path d="M52.17,195.175c3.638,5.379,9.794,8.922,16.756,8.922c0.228,0,0.44-0.062,0.663-0.073c2.576-0.083,5.043-0.61,7.291-1.574 c1.574-0.678,2.996-1.6,4.332-2.636c4.782-3.702,7.927-9.429,7.927-15.933c0-11.144-9.066-20.216-20.212-20.216 s-20.213,9.072-20.213,20.216c0,2.263,0.461,4.411,1.149,6.446c0.288,0.85,0.616,1.673,1.015,2.471 C51.279,193.606,51.667,194.434,52.17,195.175z"></path>
+                                <path d="M269.755,209.068c2.656,0,5.173-0.549,7.503-1.481c1.589-0.642,3.06-1.491,4.422-2.495 c1.035-0.767,1.988-1.616,2.863-2.559c3.34-3.604,5.432-8.389,5.432-13.681c0-11.144-9.071-20.21-20.215-20.21 s-20.216,9.066-20.216,20.21c0,4.878,1.812,9.3,4.702,12.801c0.818,0.989,1.719,1.89,2.708,2.713 c1.311,1.088,2.729,2.024,4.293,2.755C263.836,208.333,266.704,209.068,269.755,209.068z"></path>
+                              </g>
+                            </g>
+                          </g>
+                        </svg>
+                      </div>
+                    </div>
+                    <span>GỬI THÔNG TIN</span>
+                  </button>
+                  <p class="search-form-status" id="search-form-status" aria-live="polite"></p>
+                  <p><i class="fa-solid fa-lock"></i><span>Thông tin của bạn được bảo mật và chỉ sử dụng để liên hệ tư vấn.</span></p>
+                </div>
+              </div>
+            </div>
+            <aside class="search-side" aria-label="Thông tin hỗ trợ liên hệ">
+              <div class="search-side-intro">
+                <div class="search-side-badge"><i class="fa-solid fa-headset"></i></div>
+                <div>
+                  <h3>ĐỘI NGŨ SẼ LIÊN HỆ BẠN</h3>
+                  <p>Chúng tôi luôn sẵn sàng hỗ trợ và tư vấn giải pháp phù hợp nhất.</p>
+                </div>
+              </div>
+              <div class="search-side-list">
+                <div class="search-side-item">
+                  <div class="search-side-icon"><i class="fa-solid fa-phone"></i></div>
+                  <div>
+                    <strong>Hotline</strong>
+                    <a href="tel:0867922174">0867 922 174</a>
+                    <span>Hỗ trợ nhanh mỗi ngày</span>
+                  </div>
+                </div>
+                <div class="search-side-item">
+                  <div class="search-side-icon"><i class="fa-solid fa-envelope"></i></div>
+                  <div>
+                    <strong>Email</strong>
+                    <a href="mailto:nguyentuanw135@gmail.com">nguyentuanw135@gmail.com</a>
+                    <span>Phản hồi sớm cho yêu cầu đặt xe</span>
+                  </div>
+                </div>
+                <div class="search-side-item">
+                  <div class="search-side-icon"><i class="fa-solid fa-location-dot"></i></div>
+                  <div>
+                    <strong>Địa chỉ</strong>
+                    <span>Tân Uyên, Bình Dương (cũ), TPHCM và khu vực lân cận</span>
+                  </div>
+                </div>
+                <div class="search-side-item">
+                  <div class="search-side-icon"><i class="fa-regular fa-clock"></i></div>
+                  <div>
+                    <strong>Giờ làm việc</strong>
+                    <span>Hỗ trợ 24/7, tư vấn linh hoạt theo nhu cầu</span>
+                  </div>
+                </div>
+              </div>
+            </aside>
           </div>
         </form>
       </div>
@@ -285,6 +382,27 @@
       </div>
     </section>
   </main>
+
+  <div class="form-popup" id="form-popup" aria-hidden="true">
+    <div class="form-popup-backdrop" data-popup-close></div>
+    <div class="form-popup-dialog" role="dialog" aria-modal="true" aria-labelledby="form-popup-title">
+      <button class="form-popup-close" type="button" aria-label="Đóng thông báo" data-popup-close>
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="form-popup-icon is-loading" id="form-popup-loading">
+        <span class="form-popup-spinner"></span>
+      </div>
+      <div class="form-popup-icon is-success" id="form-popup-success" hidden>
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+      <div class="form-popup-icon is-error" id="form-popup-error" hidden>
+        <i class="fa-solid fa-circle-exclamation"></i>
+      </div>
+      <h3 id="form-popup-title">Đang gửi thông tin</h3>
+      <p id="form-popup-message">Vui lòng chờ trong giây lát...</p>
+      <button class="form-popup-action" type="button" id="form-popup-action" hidden data-popup-close>Đã hiểu</button>
+    </div>
+  </div>
 
   <footer class="footer">
     <div class="container footer-grid" id="blog">

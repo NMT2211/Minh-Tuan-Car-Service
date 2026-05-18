@@ -3,6 +3,9 @@
   const header = document.querySelector(".header");
   const toTop = document.querySelector(".to-top");
   const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const rentalLeadConfig = {
+    endpoint: "https://script.google.com/macros/s/AKfycbzv4Ysg-Laufx6TwwPYJMH6EQ7mq2OS9Stbbzr5KDnkyX5OixcVCxos5ekYxK9CyRxs/exec",
+  };
 
   function ensureResponsiveHeaderControls() {
     if (!header) {
@@ -384,10 +387,200 @@
     });
   }
 
+  function initInputGroups() {
+    const groups = Array.from(document.querySelectorAll(".inputGroup"));
+    if (!groups.length) return;
+
+    groups.forEach((group) => {
+      const field = group.querySelector("input, select");
+      if (!field) return;
+
+      const syncState = () => {
+        group.classList.toggle("has-value", Boolean(field.value));
+      };
+
+      syncState();
+      field.addEventListener("input", syncState);
+      field.addEventListener("change", syncState);
+      field.addEventListener("blur", syncState);
+    });
+  }
+
+  function resetInputGroups(form) {
+    form.querySelectorAll(".inputGroup").forEach((group) => {
+      group.classList.remove("has-value");
+    });
+  }
+
+  function setLeadFormStatus(element, type, message) {
+    if (!element) return;
+    element.classList.remove("is-success", "is-error", "is-loading");
+    if (type) {
+      element.classList.add(`is-${type}`);
+    }
+    element.textContent = message || "";
+  }
+
+  function setFormPopupState(type, title, message) {
+    const popup = document.querySelector("#form-popup");
+    const titleElement = document.querySelector("#form-popup-title");
+    const messageElement = document.querySelector("#form-popup-message");
+    const actionButton = document.querySelector("#form-popup-action");
+    const closeButton = popup?.querySelector(".form-popup-close");
+    const loadingIcon = document.querySelector("#form-popup-loading");
+    const successIcon = document.querySelector("#form-popup-success");
+    const errorIcon = document.querySelector("#form-popup-error");
+
+    if (!popup || !titleElement || !messageElement || !actionButton) return;
+
+    popup.classList.add("is-open");
+    popup.setAttribute("aria-hidden", "false");
+    titleElement.textContent = title || "";
+    messageElement.textContent = message || "";
+
+    if (loadingIcon) loadingIcon.hidden = type !== "loading";
+    if (successIcon) successIcon.hidden = type !== "success";
+    if (errorIcon) errorIcon.hidden = type !== "error";
+    actionButton.hidden = type === "loading";
+    if (closeButton) closeButton.hidden = type === "loading";
+  }
+
+  function closeFormPopup() {
+    const popup = document.querySelector("#form-popup");
+    if (!popup) return;
+    popup.classList.remove("is-open");
+    popup.setAttribute("aria-hidden", "true");
+  }
+
+  function initFormPopup() {
+    const popup = document.querySelector("#form-popup");
+    if (!popup) return;
+
+    popup.querySelectorAll("[data-popup-close]").forEach((element) => {
+      element.addEventListener("click", closeFormPopup);
+    });
+  }
+
+  function buildLeadPayload(fields) {
+    return new URLSearchParams(fields).toString();
+  }
+
+  function collectLeadFormFields(form) {
+    const formData = new FormData(form);
+    const serviceField = form.querySelector("#service-type");
+    const selectedOption = serviceField?.options?.[serviceField.selectedIndex];
+    const fields = {
+      phone: String(formData.get("phone") || "").trim(),
+      service_value: String(formData.get("service") || "").trim(),
+      service_label: String(selectedOption?.text || formData.get("service") || "").trim(),
+      pickup_date: String(formData.get("pickup_date") || "").trim(),
+      return_date: String(formData.get("return_date") || "").trim(),
+      pickup_location: String(formData.get("pickup_location") || "").trim(),
+      note: String(formData.get("customer_note") || "").trim(),
+      source: "Website",
+      page_url: window.location.href,
+      submitted_at: new Date().toISOString(),
+      user_agent: navigator.userAgent,
+    };
+
+    return fields;
+  }
+
+  function sendLeadByBeacon(endpoint, payload) {
+    if (!("sendBeacon" in navigator)) return false;
+
+    try {
+      const body = new Blob([payload], {
+        type: "application/x-www-form-urlencoded;charset=UTF-8",
+      });
+      return navigator.sendBeacon(endpoint, body);
+    } catch (error) {
+      return false;
+    }
+  }
+
+  async function submitLeadForm(event) {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const submitButton = form.querySelector(".send-btn");
+    const statusElement = form.querySelector("#search-form-status");
+    const phoneInput = form.querySelector("#contact-phone");
+    const phone = phoneInput?.value.trim() || "";
+    if (!phone) {
+      setLeadFormStatus(statusElement, "error", "Vui lòng nhập số điện thoại.");
+      phoneInput?.focus();
+      return;
+    }
+
+    if (!rentalLeadConfig.endpoint) {
+      setLeadFormStatus(
+        statusElement,
+        "error",
+        "Chưa cấu hình URL Google Apps Script để nhận dữ liệu."
+      );
+      return;
+    }
+
+    const payload = buildLeadPayload(collectLeadFormFields(form));
+
+    submitButton?.setAttribute("disabled", "disabled");
+    setLeadFormStatus(statusElement, "loading", "Đang gửi thông tin...");
+    setFormPopupState("loading", "Đang gửi thông tin", "Vui lòng chờ trong giây lát...");
+
+    try {
+      const beaconQueued = sendLeadByBeacon(rentalLeadConfig.endpoint, payload);
+      if (beaconQueued) {
+        form.reset();
+        resetInputGroups(form);
+        setLeadFormStatus(statusElement, "success", "Đã gửi thông tin. Chúng tôi sẽ liên hệ bạn sớm.");
+        setFormPopupState("success", "Gửi thành công", "Chúng tôi đã nhận thông tin và sẽ liên hệ bạn sớm.");
+        return;
+      }
+
+      await fetch(rentalLeadConfig.endpoint, {
+        method: "POST",
+        mode: "no-cors",
+        keepalive: true,
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+        },
+        body: payload,
+      });
+
+      form.reset();
+      resetInputGroups(form);
+      setLeadFormStatus(statusElement, "success", "Đã gửi thông tin. Chúng tôi sẽ liên hệ bạn sớm.");
+      setFormPopupState("success", "Gửi thành công", "Chúng tôi đã nhận thông tin và sẽ liên hệ bạn sớm.");
+    } catch (error) {
+      setLeadFormStatus(
+        statusElement,
+        "error",
+        "Gửi chưa thành công. Vui lòng thử lại hoặc liên hệ hotline."
+      );
+      setFormPopupState(
+        "error",
+        "Gửi chưa thành công",
+        "Vui lòng thử lại hoặc liên hệ hotline để được hỗ trợ nhanh hơn."
+      );
+    } finally {
+      submitButton?.removeAttribute("disabled");
+    }
+  }
+
+  function initLeadForm() {
+    const form = document.querySelector("#lead-form");
+    if (!form) return;
+    form.addEventListener("submit", submitLeadForm);
+  }
+
   function init() {
     lockMediaInteractions();
     initMenu();
     closeMenu();
+    initInputGroups();
+    initFormPopup();
+    initLeadForm();
     initRevealObserver();
     scheduleDriveIn(heroCarWrap, 140);
     scheduleDriveIn(aboutCars, 180);
