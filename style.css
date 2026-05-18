@@ -2652,6 +2652,10 @@ section[id]{scroll-margin-top:128px}
   align-items:start;
 }
 
+.search-grid > *{
+  min-width:0;
+}
+
 .search-grid label,
 .search-actions{
   min-width:0;
@@ -3228,10 +3232,14 @@ section[id]{scroll-margin-top:128px}
   font-family:inherit;
   margin:0;
   position: relative;
+  width:100%;
+  min-width:0;
 }
 
 .inputGroup input,
 .inputGroup select {
+  display:block;
+  max-width:100%;
   font-size:15px;
   padding:0 16px;
   outline: none;
