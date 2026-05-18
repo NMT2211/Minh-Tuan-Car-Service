@@ -1248,3 +1248,326 @@
     font-size:14px;
   }
 }
+
+@media (max-width:767px){
+  .about-hero{
+    padding:24px 0 18px;
+  }
+
+  .about-hero-inner,
+  .brand-grid,
+  .numbers-grid{
+    gap:18px;
+  }
+
+  .about-copy{
+    padding-top:6px;
+  }
+
+  .breadcrumb{
+    margin-bottom:12px;
+  }
+
+  .hero-kicker{
+    margin-bottom:6px;
+    font-size:16px;
+    letter-spacing:.08em;
+  }
+
+  .about-copy h1{
+    font-size:clamp(2rem, 8vw, 2.35rem);
+    line-height:1.08;
+  }
+
+  .hero-line{
+    width:64px;
+    height:3px;
+    margin:16px 0;
+  }
+
+  .about-copy p{
+    margin-bottom:10px;
+    font-size:15px;
+    line-height:1.62;
+  }
+
+  .about-cars{
+    gap:12px;
+    padding-top:2px;
+  }
+
+  .car-main,
+  .car-secondary{
+    max-width:min(100%, 420px);
+    margin-inline:auto;
+  }
+
+  .car-secondary{
+    margin-top:-14px;
+  }
+
+  .brand-section,
+  .numbers-section,
+  .service-summary,
+  .about-fleet,
+  .reasons-section{
+    padding:18px 0 22px;
+  }
+
+  .section-title.about-title,
+  .numbers-intro{
+    text-align:left;
+  }
+
+  .section-title.about-title h2,
+  .section-title.about-title p,
+  .section-title.about-title span,
+  .numbers-intro > p{
+    max-width:none;
+    text-align:left;
+  }
+
+  .section-title.about-title h2,
+  .brand-content h2,
+  .numbers-intro h2,
+  .pricing-box h2{
+    margin:8px 0 6px;
+    line-height:1.16;
+    text-wrap:balance;
+  }
+
+  .section-title.about-title p,
+  .brand-content > p,
+  .numbers-intro > p{
+    font-size:15px;
+    line-height:1.55;
+  }
+
+  .brand-image img{
+    height:240px;
+    border-radius:22px;
+  }
+
+  .brand-features{
+    gap:12px;
+    margin-top:16px;
+  }
+
+  .brand-features article{
+    grid-template-columns:52px 1fr;
+    gap:10px;
+    padding:16px 14px;
+    border:1px solid #e8efe9;
+    border-radius:18px;
+    background:#fff;
+    box-shadow:0 8px 18px rgba(0,0,0,.03);
+  }
+
+  .icon-badge{
+    width:52px;
+    height:52px;
+    border-radius:16px;
+    font-size:20px;
+  }
+
+  .brand-features h3{
+    margin:0 0 4px;
+    font-size:16px;
+    line-height:1.25;
+  }
+
+  .brand-features p{
+    font-size:13px;
+    line-height:1.58;
+  }
+
+  .about-btn{
+    width:100%;
+    min-width:0;
+    margin-top:16px;
+    justify-content:center;
+  }
+
+  .numbers-cards{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:8px;
+    background:transparent;
+    border:none;
+    border-radius:0;
+    box-shadow:none;
+    overflow:visible;
+  }
+
+  .numbers-cards article{
+    display:grid;
+    grid-template-columns:44px 1fr;
+    grid-template-areas:
+      "icon title"
+      "desc desc";
+    align-items:start;
+    column-gap:9px;
+    row-gap:7px;
+    min-height:0;
+    padding:14px 12px;
+    border:none;
+    border-radius:18px;
+    background:rgba(0,97,38,.05);
+    box-shadow:inset 0 0 0 1px rgba(0,97,38,.08);
+    text-align:left;
+  }
+
+  .numbers-cards i{
+    grid-area:icon;
+    margin:0;
+    font-size:32px;
+    -webkit-text-stroke:2px #1c8b3a;
+    justify-self:start;
+  }
+
+  .numbers-cards strong{
+    grid-area:title;
+    font-size:20px;
+    align-self:center;
+  }
+
+  .numbers-cards span{
+    grid-area:desc;
+    margin-top:0;
+    font-size:13px;
+    line-height:1.5;
+  }
+
+  .service-summary-grid{
+    gap:12px;
+  }
+
+  .service-summary-grid article{
+    display:grid;
+    grid-template-columns:52px 1fr;
+    grid-template-areas:
+      "icon title"
+      "desc desc";
+    column-gap:10px;
+    row-gap:7px;
+    padding:16px 14px;
+    border-radius:22px;
+  }
+
+  .service-summary-grid i{
+    grid-area:icon;
+    width:52px;
+    height:52px;
+    margin:0;
+    border-radius:16px;
+    font-size:20px;
+  }
+
+  .service-summary-grid h3{
+    grid-area:title;
+    margin:0;
+    font-size:16px;
+    line-height:1.2;
+    align-self:center;
+  }
+
+  .service-summary-grid p{
+    grid-area:desc;
+    font-size:13px;
+    line-height:1.58;
+  }
+
+  .fleet-tabs{
+    margin-bottom:14px;
+  }
+
+  .fleet-card-item{
+    padding:18px 14px 16px;
+    border-radius:22px;
+    text-align:left;
+  }
+
+  .fleet-card-item img{
+    height:170px;
+    margin-bottom:4px;
+  }
+
+  .vf5-card img{
+    height:162px;
+  }
+
+  .limo-card img{
+    height:176px;
+  }
+
+  .fleet-card-item h3{
+    margin:6px 0;
+    font-size:18px;
+  }
+
+  .fleet-card-item p{
+    font-size:13px;
+    line-height:1.58;
+  }
+
+  .reasons-grid{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:12px;
+  }
+
+  .reasons-grid article{
+    min-height:0;
+    padding:16px 12px;
+    border-radius:18px;
+  }
+
+  .reasons-grid img,
+  .reason-avatar{
+    width:52px;
+    height:52px;
+    margin:0 auto 12px;
+  }
+
+  .reasons-grid p{
+    font-size:13px;
+    line-height:1.5;
+  }
+}
+
+@media (max-width:390px){
+  .about-hero-inner,
+  .brand-grid,
+  .numbers-grid{
+    gap:16px;
+  }
+
+  .brand-image img{
+    height:220px;
+  }
+
+  .brand-features article,
+  .service-summary-grid article,
+  .fleet-card-item,
+  .reasons-grid article{
+    padding:16px 12px;
+  }
+
+  .numbers-cards{
+    grid-template-columns:1fr;
+  }
+
+  .fleet-card-item img{
+    height:156px;
+  }
+
+  .vf5-card img{
+    height:150px;
+  }
+
+  .limo-card img{
+    height:164px;
+  }
+
+  .reasons-grid{
+    grid-template-columns:1fr;
+  }
+}
