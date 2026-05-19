@@ -3321,3 +3321,47 @@ section[id]{scroll-margin-top:128px}
 .inputGroup.has-value input[type="date"]::-webkit-datetime-edit{
   color:#3f4a43;
 }
+
+.inputGroup-date{
+  overflow:hidden;
+}
+
+.inputGroup-date label,
+.inputGroup-date:focus-within label,
+.inputGroup-date.has-value label{
+  top:10px;
+  transform:none;
+  margin-left:14px;
+  padding:0 6px;
+  font-size:12px;
+}
+
+.inputGroup-date input[type="date"]{
+  min-width:0;
+  padding-top:18px;
+  padding-bottom:6px;
+  line-height:1.2;
+  color:transparent;
+  -webkit-appearance:none;
+  appearance:none;
+}
+
+.inputGroup-date input[type="date"]::-webkit-date-and-time-value{
+  text-align:left;
+}
+
+.inputGroup-date input[type="date"]::-webkit-datetime-edit,
+.inputGroup-date input[type="date"]::-webkit-datetime-edit-fields-wrapper{
+  min-width:0;
+  padding:0;
+}
+
+.inputGroup-date:focus-within input[type="date"],
+.inputGroup-date.has-value input[type="date"]{
+  color:#3f4a43;
+}
+
+.inputGroup-date:focus-within input[type="date"]::-webkit-datetime-edit,
+.inputGroup-date.has-value input[type="date"]::-webkit-datetime-edit{
+  color:#3f4a43;
+}
