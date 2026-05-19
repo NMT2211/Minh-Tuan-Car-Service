@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Thuê xe đi Đà Lạt từ Bình Dương</title>
+  <desc id="desc">Ảnh minh họa tuyến đường thuê xe từ Bình Dương đi Đà Lạt.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#eaf7ff"/>
+      <stop offset="100%" stop-color="#ffffff"/>
+    </linearGradient>
+    <linearGradient id="road" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0ab646"/>
+      <stop offset="100%" stop-color="#006e24"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" rx="38" fill="url(#sky)"/>
+  <path d="M0 430c114-62 240-62 354-12 99 43 207 48 328-4 169-72 328-40 518 55v206H0V430Z" fill="#d7f0db"/>
+  <path d="M0 494c136-44 269-46 398 16 116 57 238 58 382-8 144-65 283-54 420 11v162H0V494Z" fill="#b4e1be"/>
+  <path d="M772 104c86 0 156 70 156 156s-70 156-156 156-156-70-156-156 70-156 156-156Z" fill="#edf8ef"/>
+  <path d="M766 220c34 0 62 28 62 62" stroke="#86d094" stroke-width="18" stroke-linecap="round"/>
+  <path d="M606 352h404" stroke="#ffffff" stroke-width="22" stroke-linecap="round"/>
+  <path d="M658 266l102-108 78 88 82-106 90 126" stroke="#0a8f38" stroke-width="18" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="66" y="70" width="516" height="226" rx="30" fill="url(#road)"/>
+  <text x="112" y="146" fill="#d8f47a" font-size="26" font-weight="700" font-family="'Be Vietnam Pro', Arial, sans-serif">TUYẾN ĐƯỜNG PHỔ BIẾN</text>
+  <text x="112" y="218" fill="#ffffff" font-size="54" font-weight="700" font-family="'Be Vietnam Pro', Arial, sans-serif">Đà Lạt từ Bình Dương</text>
+  <text x="112" y="268" fill="#ecfff2" font-size="24" font-weight="500" font-family="'Be Vietnam Pro', Arial, sans-serif">Gợi ý xe, lịch trình và lưu ý</text>
+  <text x="112" y="302" fill="#ecfff2" font-size="24" font-weight="500" font-family="'Be Vietnam Pro', Arial, sans-serif">cho chuyến đi an toàn, thoải mái.</text>
+</svg>

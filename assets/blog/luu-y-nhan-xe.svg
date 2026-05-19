@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">5 lưu ý trước khi nhận xe tự lái</title>
+  <desc id="desc">Ảnh minh họa danh sách lưu ý trước khi nhận xe tự lái.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#effbf1"/>
+      <stop offset="100%" stop-color="#d6efd9"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" rx="38" fill="url(#bg)"/>
+  <rect x="74" y="76" width="1052" height="522" rx="34" fill="#ffffff" opacity=".98"/>
+  <rect x="110" y="116" width="408" height="430" rx="30" fill="#0a8f38"/>
+  <text x="158" y="190" fill="#d8f47a" font-size="26" font-weight="700" font-family="'Be Vietnam Pro', Arial, sans-serif">KINH NGHIỆM THUÊ XE</text>
+  <text x="158" y="268" fill="#ffffff" font-size="64" font-weight="700" font-family="'Be Vietnam Pro', Arial, sans-serif">5 lưu ý</text>
+  <text x="158" y="332" fill="#ffffff" font-size="32" font-weight="600" font-family="'Be Vietnam Pro', Arial, sans-serif">trước khi nhận xe tự lái</text>
+  <g transform="translate(598 146)">
+    <rect x="0" y="0" width="416" height="70" rx="22" fill="#f4fbf5"/>
+    <rect x="0" y="94" width="416" height="70" rx="22" fill="#f4fbf5"/>
+    <rect x="0" y="188" width="416" height="70" rx="22" fill="#f4fbf5"/>
+    <rect x="0" y="282" width="416" height="70" rx="22" fill="#f4fbf5"/>
+    <rect x="0" y="376" width="416" height="70" rx="22" fill="#f4fbf5"/>
+    <circle cx="42" cy="35" r="18" fill="#0a8f38"/>
+    <circle cx="42" cy="129" r="18" fill="#0a8f38"/>
+    <circle cx="42" cy="223" r="18" fill="#0a8f38"/>
+    <circle cx="42" cy="317" r="18" fill="#0a8f38"/>
+    <circle cx="42" cy="411" r="18" fill="#0a8f38"/>
+    <path d="M34 36l6 7 12-15" stroke="#ffffff" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M34 130l6 7 12-15" stroke="#ffffff" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M34 224l6 7 12-15" stroke="#ffffff" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M34 318l6 7 12-15" stroke="#ffffff" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M34 412l6 7 12-15" stroke="#ffffff" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

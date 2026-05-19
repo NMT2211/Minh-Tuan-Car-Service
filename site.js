@@ -229,7 +229,7 @@
     registerGroupedChildren(".pricing-points", { step: 80 });
     registerGroupedChildren(".faq-grid", { step: 80 });
 
-    registerReveal(document.querySelector(".cta-box > img"), {
+    registerReveal(document.querySelector(".cta-visual img"), {
       delay: 50,
       distance: "24px",
     });
@@ -465,6 +465,86 @@
     return new URLSearchParams(fields).toString();
   }
 
+  function normalizePhoneNumber(value) {
+    return String(value || "").replace(/[\s().-]/g, "");
+  }
+
+  function isValidVietnamPhone(value) {
+    const normalizedPhone = normalizePhoneNumber(value);
+    return /^(?:\+?84|0)(?:3|5|7|8|9)\d{8}$/.test(normalizedPhone);
+  }
+
+  function getTodayLocalIso() {
+    const today = new Date();
+    today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
+    return today.toISOString().slice(0, 10);
+  }
+
+  function syncDateFieldLimits(form) {
+    const pickupDateInput = form.querySelector("#pickup-date");
+    const returnDateInput = form.querySelector("#return-date");
+    const todayIso = getTodayLocalIso();
+
+    if (pickupDateInput) {
+      pickupDateInput.min = todayIso;
+    }
+
+    if (returnDateInput) {
+      returnDateInput.min = pickupDateInput?.value || todayIso;
+      if (returnDateInput.value && returnDateInput.min && returnDateInput.value < returnDateInput.min) {
+        returnDateInput.value = "";
+      }
+    }
+  }
+
+  function clearLeadFormErrors(form) {
+    form.querySelectorAll("[aria-invalid='true']").forEach((field) => {
+      field.setAttribute("aria-invalid", "false");
+    });
+  }
+
+  function markLeadFieldInvalid(field) {
+    if (!field) return;
+    field.setAttribute("aria-invalid", "true");
+  }
+
+  function validateLeadForm(form) {
+    const phoneInput = form.querySelector("#contact-phone");
+    const pickupDateInput = form.querySelector("#pickup-date");
+    const returnDateInput = form.querySelector("#return-date");
+    const phone = phoneInput?.value.trim() || "";
+    const pickupDate = pickupDateInput?.value || "";
+    const returnDate = returnDateInput?.value || "";
+
+    clearLeadFormErrors(form);
+
+    if (!phone) {
+      markLeadFieldInvalid(phoneInput);
+      return {
+        message: "Vui l\u00f2ng nh\u1eadp s\u1ed1 \u0111i\u1ec7n tho\u1ea1i \u0111\u1ec3 Minh Tu\u1ea5n Car Service li\u00ean h\u1ec7 t\u01b0 v\u1ea5n.",
+        field: phoneInput,
+      };
+    }
+
+    if (!isValidVietnamPhone(phone)) {
+      markLeadFieldInvalid(phoneInput);
+      return {
+        message: "S\u1ed1 \u0111i\u1ec7n tho\u1ea1i ch\u01b0a \u0111\u00fang \u0111\u1ecbnh d\u1ea1ng. Vui l\u00f2ng nh\u1eadp s\u1ed1 di \u0111\u1ed9ng Vi\u1ec7t Nam h\u1ee3p l\u1ec7.",
+        field: phoneInput,
+      };
+    }
+
+    if (pickupDate && returnDate && returnDate < pickupDate) {
+      markLeadFieldInvalid(returnDateInput);
+      return {
+        message: "Ng\u00e0y tr\u1ea3 xe c\u1ea7n b\u1eb1ng ho\u1eb7c sau ng\u00e0y nh\u1eadn xe.",
+        field: returnDateInput,
+      };
+    }
+
+    return null;
+  }
+
   function collectLeadFormFields(form) {
     const formData = new FormData(form);
     const serviceField = form.querySelector("#service-type");
@@ -517,7 +597,7 @@
       setLeadFormStatus(
         statusElement,
         "error",
-        "Chưa cấu hình URL Google Apps Script để nhận dữ liệu."
+        "Ch\u01b0a c\u1ea5u h\u00ecnh URL Google Apps Script \u0111\u1ec3 nh\u1eadn d\u1eef li\u1ec7u."
       );
       return;
     }
@@ -525,8 +605,8 @@
     const payload = buildLeadPayload(collectLeadFormFields(form));
 
     submitButton?.setAttribute("disabled", "disabled");
-    setLeadFormStatus(statusElement, "loading", "Đang gửi thông tin...");
-    setFormPopupState("loading", "Đang gửi thông tin", "Vui lòng chờ trong giây lát...");
+    setLeadFormStatus(statusElement, "loading", "\u0110ang g\u1eedi th\u00f4ng tin...");
+    setFormPopupState("loading", "\u0110ang g\u1eedi th\u00f4ng tin", "Vui l\u00f2ng ch\u1edd trong gi\u00e2y l\u00e1t...");
 
     try {
       const beaconQueued = sendLeadByBeacon(rentalLeadConfig.endpoint, payload);
@@ -574,6 +654,190 @@
     form.addEventListener("submit", submitLeadForm);
   }
 
+  async function submitLeadForm(event) {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const submitButton = form.querySelector(".send-btn");
+    const statusElement = form.querySelector("#search-form-status");
+    const validationError = validateLeadForm(form);
+    if (validationError) {
+      setLeadFormStatus(statusElement, "error", validationError.message);
+      validationError.field?.focus();
+      return;
+    }
+
+    if (!rentalLeadConfig.endpoint) {
+      setLeadFormStatus(
+        statusElement,
+        "error",
+        "Chưa cấu hình URL Google Apps Script để nhận dữ liệu."
+      );
+      return;
+    }
+
+    const payload = buildLeadPayload(collectLeadFormFields(form));
+
+    submitButton?.setAttribute("disabled", "disabled");
+    setLeadFormStatus(statusElement, "loading", "Đang gửi thông tin...");
+    setFormPopupState("loading", "Đang gửi thông tin", "Vui lòng chờ trong giây lát...");
+
+    try {
+      const beaconQueued = sendLeadByBeacon(rentalLeadConfig.endpoint, payload);
+      if (beaconQueued) {
+        form.reset();
+        resetInputGroups(form);
+        syncDateFieldLimits(form);
+        setLeadFormStatus(statusElement, "success", "\u0110\u00e3 g\u1eedi th\u00f4ng tin. Ch\u00fang t\u00f4i s\u1ebd li\u00ean h\u1ec7 b\u1ea1n s\u1edbm.");
+        setFormPopupState("success", "G\u1eedi th\u00e0nh c\u00f4ng", "Ch\u00fang t\u00f4i \u0111\u00e3 nh\u1eadn th\u00f4ng tin v\u00e0 s\u1ebd li\u00ean h\u1ec7 b\u1ea1n s\u1edbm.");
+        return;
+      }
+
+      await fetch(rentalLeadConfig.endpoint, {
+        method: "POST",
+        mode: "no-cors",
+        keepalive: true,
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+        },
+        body: payload,
+      });
+
+      form.reset();
+      resetInputGroups(form);
+      syncDateFieldLimits(form);
+      setLeadFormStatus(statusElement, "success", "\u0110\u00e3 g\u1eedi th\u00f4ng tin. Ch\u00fang t\u00f4i s\u1ebd li\u00ean h\u1ec7 b\u1ea1n s\u1edbm.");
+      setFormPopupState("success", "G\u1eedi th\u00e0nh c\u00f4ng", "Ch\u00fang t\u00f4i \u0111\u00e3 nh\u1eadn th\u00f4ng tin v\u00e0 s\u1ebd li\u00ean h\u1ec7 b\u1ea1n s\u1edbm.");
+    } catch (error) {
+      setLeadFormStatus(
+        statusElement,
+        "error",
+        "G\u1eedi ch\u01b0a th\u00e0nh c\u00f4ng. Vui l\u00f2ng th\u1eed l\u1ea1i ho\u1eb7c li\u00ean h\u1ec7 hotline \u0111\u1ec3 \u0111\u01b0\u1ee3c h\u1ed7 tr\u1ee3 nhanh h\u01a1n."
+      );
+      setFormPopupState(
+        "error",
+        "G\u1eedi ch\u01b0a th\u00e0nh c\u00f4ng",
+        "Vui l\u00f2ng th\u1eed l\u1ea1i ho\u1eb7c li\u00ean h\u1ec7 hotline \u0111\u1ec3 \u0111\u01b0\u1ee3c h\u1ed7 tr\u1ee3 nhanh h\u01a1n."
+      );
+    } finally {
+      submitButton?.removeAttribute("disabled");
+    }
+  }
+
+  function initLeadForm() {
+    const form = document.querySelector("#lead-form");
+    if (!form) return;
+
+    syncDateFieldLimits(form);
+    form.querySelector("#pickup-date")?.addEventListener("change", () => {
+      syncDateFieldLimits(form);
+    });
+    form.querySelector("#return-date")?.addEventListener("focus", () => {
+      syncDateFieldLimits(form);
+    });
+
+    form.addEventListener("submit", submitLeadForm);
+  }
+
+  async function submitLeadForm(event) {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const submitButton = form.querySelector(".send-btn");
+    const statusElement = form.querySelector("#search-form-status");
+    const validationError = validateLeadForm(form);
+    if (validationError) {
+      setLeadFormStatus(statusElement, "error", validationError.message);
+      validationError.field?.focus();
+      return;
+    }
+
+    if (!rentalLeadConfig.endpoint) {
+      setLeadFormStatus(
+        statusElement,
+        "error",
+        "Ch\u01b0a c\u1ea5u h\u00ecnh URL Google Apps Script \u0111\u1ec3 nh\u1eadn d\u1eef li\u1ec7u."
+      );
+      return;
+    }
+
+    const payload = buildLeadPayload(collectLeadFormFields(form));
+
+    submitButton?.setAttribute("disabled", "disabled");
+    setLeadFormStatus(statusElement, "loading", "\u0110ang g\u1eedi th\u00f4ng tin...");
+    setFormPopupState("loading", "\u0110ang g\u1eedi th\u00f4ng tin", "Vui l\u00f2ng ch\u1edd trong gi\u00e2y l\u00e1t...");
+
+    try {
+      const beaconQueued = sendLeadByBeacon(rentalLeadConfig.endpoint, payload);
+      if (beaconQueued) {
+        form.reset();
+        resetInputGroups(form);
+        syncDateFieldLimits(form);
+        setLeadFormStatus(statusElement, "success", "\u0110\u00e3 g\u1eedi th\u00f4ng tin. Ch\u00fang t\u00f4i s\u1ebd li\u00ean h\u1ec7 b\u1ea1n s\u1edbm.");
+        setFormPopupState("success", "G\u1eedi th\u00e0nh c\u00f4ng", "Ch\u00fang t\u00f4i \u0111\u00e3 nh\u1eadn th\u00f4ng tin v\u00e0 s\u1ebd li\u00ean h\u1ec7 b\u1ea1n s\u1edbm.");
+        return;
+      }
+
+      await fetch(rentalLeadConfig.endpoint, {
+        method: "POST",
+        mode: "no-cors",
+        keepalive: true,
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+        },
+        body: payload,
+      });
+
+      form.reset();
+      resetInputGroups(form);
+      syncDateFieldLimits(form);
+      setLeadFormStatus(statusElement, "success", "\u0110\u00e3 g\u1eedi th\u00f4ng tin. Ch\u00fang t\u00f4i s\u1ebd li\u00ean h\u1ec7 b\u1ea1n s\u1edbm.");
+      setFormPopupState("success", "G\u1eedi th\u00e0nh c\u00f4ng", "Ch\u00fang t\u00f4i \u0111\u00e3 nh\u1eadn th\u00f4ng tin v\u00e0 s\u1ebd li\u00ean h\u1ec7 b\u1ea1n s\u1edbm.");
+    } catch (error) {
+      setLeadFormStatus(
+        statusElement,
+        "error",
+        "G\u1eedi ch\u01b0a th\u00e0nh c\u00f4ng. Vui l\u00f2ng th\u1eed l\u1ea1i ho\u1eb7c li\u00ean h\u1ec7 hotline \u0111\u1ec3 \u0111\u01b0\u1ee3c h\u1ed7 tr\u1ee3 nhanh h\u01a1n."
+      );
+      setFormPopupState(
+        "error",
+        "G\u1eedi ch\u01b0a th\u00e0nh c\u00f4ng",
+        "Vui l\u00f2ng th\u1eed l\u1ea1i ho\u1eb7c li\u00ean h\u1ec7 hotline \u0111\u1ec3 \u0111\u01b0\u1ee3c h\u1ed7 tr\u1ee3 nhanh h\u01a1n."
+      );
+    } finally {
+      submitButton?.removeAttribute("disabled");
+    }
+  }
+
+  function initLeadForm() {
+    const form = document.querySelector("#lead-form");
+    if (!form) return;
+
+    syncDateFieldLimits(form);
+    form.querySelector("#pickup-date")?.addEventListener("change", () => {
+      syncDateFieldLimits(form);
+    });
+    form.querySelector("#return-date")?.addEventListener("focus", () => {
+      syncDateFieldLimits(form);
+    });
+
+    form.addEventListener("submit", submitLeadForm);
+  }
+
+  function initBlogArticleMobileBar() {
+    if (!document.body.classList.contains("article-page")) return;
+    if (document.querySelector(".article-mobile-bar")) return;
+
+    const mobileBar = document.createElement("div");
+    mobileBar.className = "article-mobile-bar";
+    mobileBar.innerHTML = [
+      '<a class="article-mobile-call" href="tel:0867922174" aria-label="Gọi ngay 0867 922 174"><i class="fa-solid fa-phone"></i><span>GỌI NGAY</span></a>',
+      '<a class="article-mobile-zalo" href="https://zalo.me/0867922174" target="_blank" rel="noopener noreferrer" aria-label="Nhắn Zalo tư vấn"><img src="../../assets/Icon_of_Zalo.png" alt="Zalo" width="1280" height="1280"><span>NHẮN ZALO</span></a>',
+    ].join("");
+
+    document.body.appendChild(mobileBar);
+  }
+
   function init() {
     lockMediaInteractions();
     initMenu();
@@ -581,6 +845,7 @@
     initInputGroups();
     initFormPopup();
     initLeadForm();
+    initBlogArticleMobileBar();
     initRevealObserver();
     scheduleDriveIn(heroCarWrap, 140);
     scheduleDriveIn(aboutCars, 180);

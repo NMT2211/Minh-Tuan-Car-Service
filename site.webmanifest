@@ -1,0 +1,21 @@
+{
+  "name": "Minh Tuan Car Service",
+  "short_name": "Minh Tuan Car",
+  "description": "Car rental service in Tan Uyen, Binh Duong.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#007b28",
+  "icons": [
+    {
+      "src": "/assets/fav.png",
+      "sizes": "425x382",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/fav2.png",
+      "sizes": "1074x1074",
+      "type": "image/png"
+    }
+  ]
+}

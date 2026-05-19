@@ -28,6 +28,14 @@ body{
   background:#fff;
 }
 a{text-decoration:none;color:inherit}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible{
+  outline:3px solid rgba(0,123,40,.22);
+  outline-offset:2px;
+}
 img,
 svg,
 video{
@@ -35,6 +43,7 @@ video{
   display:block;
 }
 img{
+  height:auto;
   user-select:none;
   -webkit-user-select:none;
   -moz-user-select:none;
@@ -2813,6 +2822,12 @@ section[id]{scroll-margin-top:128px}
   transform:scale(.95);
 }
 
+.send-btn[disabled]{
+  cursor:wait;
+  opacity:.88;
+  box-shadow:0 8px 18px rgba(0,123,40,.16);
+}
+
 .search-actions > .send-btn{
   width:100%;
   min-width:200px;
@@ -2824,11 +2839,13 @@ section[id]{scroll-margin-top:128px}
 }
 
 .search-form-status{
+  width:100%;
   min-height:20px;
   margin:0;
   font-size:13px;
   line-height:1.5;
   font-weight:600;
+  text-align:center;
 }
 
 .search-form-status.is-success{
@@ -3201,6 +3218,18 @@ section[id]{scroll-margin-top:128px}
   .search-grid select,
   .search-grid textarea{
     border-radius:15px;
+    font-size:16px;
+  }
+
+  .inputGroup input,
+  .inputGroup select,
+  .inputGroup textarea{
+    font-size:16px;
+  }
+
+  .search-actions > .send-btn{
+    min-height:48px;
+    height:48px;
   }
 
   .search-grid input,
