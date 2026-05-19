@@ -392,7 +392,7 @@
     if (!groups.length) return;
 
     groups.forEach((group) => {
-      const field = group.querySelector("input, select");
+      const field = group.querySelector("input, select, textarea");
       if (!field) return;
 
       const syncState = () => {

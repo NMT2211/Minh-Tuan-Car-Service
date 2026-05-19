@@ -503,7 +503,7 @@ button,
 }
 .service-card h3{
   margin:0 0 14px;
-  font-size:21px;
+  font-size:20px;
 }
 .service-card p{
   color:#606d65;
@@ -2382,10 +2382,13 @@ section[id]{scroll-margin-top:128px}
   }
 
   .cta-actions{
+    width:100%;
+    max-width:none;
     gap:10px;
   }
 
   .cta-actions a{
+    width:100%;
     min-height:48px;
     justify-content:center;
   }
@@ -2803,7 +2806,7 @@ section[id]{scroll-margin-top:128px}
 }
 
 .search-actions > .send-btn{
-  width:auto;
+  width:100%;
   min-width:200px;
   height:45px;
   padding:0 22px 0 56px;
@@ -2987,6 +2990,27 @@ section[id]{scroll-margin-top:128px}
   font-size:13px;
 }
 
+.search-actions .search-privacy-note{
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  color:#55615a;
+  font-size:13px;
+  text-align:left;
+  margin-top: 8px;
+}
+
+.search-actions .search-privacy-note i{
+  margin-top:0;
+  color:#19a24b;
+  font-size:20px;
+  flex:0 0 auto;
+}
+
+.search-actions .search-privacy-note span{
+  max-width:560px;
+}
+
 .search-side{
   min-width:0;
   padding:24px 22px;
@@ -3165,6 +3189,12 @@ section[id]{scroll-margin-top:128px}
     min-width:0;
   }
 
+  .search-actions > .send-btn{
+    width:100%;
+    min-width:0;
+    align-self:stretch;
+  }
+
   .search-side{
     border-radius:18px;
   }
@@ -3258,7 +3288,7 @@ section[id]{scroll-margin-top:128px}
   font-size:15px;
   padding:0 16px;
   outline: none;
-  border:2px solid #d9e3dc;
+  border:1px solid #d9e3dc;
   background-color:#fff;
   border-radius:15px;
   width: 100%;
@@ -3266,6 +3296,23 @@ section[id]{scroll-margin-top:128px}
   color:#3f4a43;
   font-family:inherit;
   transition:border-color .3s ease, box-shadow .3s ease, color .3s ease;
+}
+
+.inputGroup textarea{
+  display:block;
+  max-width:100%;
+  font-size:15px;
+  padding:18px 16px 10px;
+  outline:none;
+  border:1px solid #d9e3dc;
+  background-color:#fff;
+  border-radius:15px;
+  width:100%;
+  min-height:110px;
+  color:#3f4a43;
+  font-family:inherit;
+  transition:border-color .3s ease, box-shadow .3s ease, color .3s ease;
+  resize:vertical;
 }
 
 .inputGroup.has-icon input,
@@ -3331,8 +3378,10 @@ section[id]{scroll-margin-top:128px}
 
 .inputGroup:focus-within input,
 .inputGroup:focus-within select,
+.inputGroup:focus-within textarea,
 .inputGroup.has-value input,
-.inputGroup.has-value select {
+.inputGroup.has-value select,
+.inputGroup.has-value textarea {
   border-color:#13863b;
   box-shadow:0 0 0 4px rgba(19,134,59,.08);
 }
@@ -3382,4 +3431,8 @@ section[id]{scroll-margin-top:128px}
   min-width:0;
   padding:0;
   overflow:hidden;
+}
+
+.inputGroup-textarea label{
+  top:26px;
 }
