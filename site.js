@@ -466,7 +466,10 @@
   }
 
   function normalizePhoneNumber(value) {
-    return String(value || "").replace(/[\s().-]/g, "");
+    return String(value || "")
+      .trim()
+      .replace(/[\u00A0\s().\-_/]/g, "")
+      .replace(/(?!^\+)[^\d]/g, "");
   }
 
   function isValidVietnamPhone(value) {
@@ -529,7 +532,7 @@
     if (!isValidVietnamPhone(phone)) {
       markLeadFieldInvalid(phoneInput);
       return {
-        message: "S\u1ed1 \u0111i\u1ec7n tho\u1ea1i ch\u01b0a \u0111\u00fang \u0111\u1ecbnh d\u1ea1ng. Vui l\u00f2ng nh\u1eadp s\u1ed1 di \u0111\u1ed9ng Vi\u1ec7t Nam h\u1ee3p l\u1ec7.",
+        message: "Vui l\u00f2ng nh\u1eadp s\u1ed1 di \u0111\u1ed9ng Vi\u1ec7t Nam h\u1ee3p l\u1ec7, v\u00ed d\u1ee5: 0912345678 ho\u1eb7c +84 912 345 678.",
         field: phoneInput,
       };
     }
@@ -550,7 +553,7 @@
     const serviceField = form.querySelector("#service-type");
     const selectedOption = serviceField?.options?.[serviceField.selectedIndex];
     const fields = {
-      phone: String(formData.get("phone") || "").trim(),
+      phone: normalizePhoneNumber(String(formData.get("phone") || "").trim()),
       service_value: String(formData.get("service") || "").trim(),
       service_label: String(selectedOption?.text || formData.get("service") || "").trim(),
       pickup_date: String(formData.get("pickup_date") || "").trim(),
